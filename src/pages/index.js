@@ -90,8 +90,11 @@ const BlogIndex = ({ data }, location) => {
       {data.contentfulHomePageBio.bio && (
         <header className="page-head">
           <h2 className="page-head-title">
-          {documentToReactComponents(JSON.parse(data.contentfulHomePageBio.bio.raw), options)}
+          {data.contentfulHomePageBio.heading}
           </h2>
+          <p style={{marginTop: "50px"}}>
+          {documentToReactComponents(JSON.parse(data.contentfulHomePageBio.bio.raw), options)}
+          </p>
         </header>
       )}
       <div className="post-feed">
@@ -124,6 +127,7 @@ const indexQuery = graphql`
       edges {
         node {
           title
+          byline
           slug
           order
           image {
@@ -142,6 +146,7 @@ const indexQuery = graphql`
     }
 
     contentfulHomePageBio {
+      heading
       bio {
         raw
       }

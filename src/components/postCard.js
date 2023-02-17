@@ -15,9 +15,14 @@ export default props => (
     }
   >
     <Link to={props.node.slug} className="post-card-link">
+    <div className="post-card-detail">
+      <h2 className="post-card-title">
+        {props.node.title || props.node.slug}
+      </h2>
+    </div>
       <div className="post-card-content">
         <h2 className="post-card-title">
-          {props.node.title || props.node.slug}
+        {props.node.byline}
         </h2>
       </div>
     </Link>

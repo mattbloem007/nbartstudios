@@ -101,50 +101,58 @@ const Doula = ({ data }, location) => {
       />
       <div className="post-feed" style={{flexDirection: "column"}}>
         <article className="post-content page-template no-image">
-                <h3 id="dynamic-styles" style={{textAlign: "center"}}>Testimonials</h3>
-                <div className="post-feed" style={{flexWrap: "nowrap", marginLeft: "145px", marginRight: "145px"}}>
-                  <article className={`testmonial-card post no-image`}>
-                    <div className="testmonial-card-link">
-                      <div className="post-card-content">
-                        <h2 className="post-card-title" style={{textAlign: "center"}}>
-                          {doulaData.testmonial[0].testmonial1}
-                        </h2>
-                      </div>
-                    </div>
-                  </article>
-                  <article className={`testmonial-card post no-image`}>
-                    <div className="testmonial-card-link">
-                      <div className="post-card-content" style={{paddingBottom: "0px", paddingTop: "0px"}}>
-                      <iframe
-                          src={doulaData.testmonial[0].videoTestimonial.file.url}
-                          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                          frameBorder="0"
-                          webkitallowfullscreen="true"
-                          mozallowfullscreen="true"
-                          allowFullScreen
-                          style={{height: "21vw"}}
-                        />
-                      {/**  <video controls>
-                          <source src={doulaData.testmonial[0].videoTestimonial.file.url} type="video/mp4" />
-                        </video>*/}
-                      </div>
-                    </div>
-                </article>
+
+              <article className="post-content page-template no-image">
+                <div className="post-content-body" style={{marginLeft: "145px", marginRight: "145px", paddingBottom: "0px"}}>
+                <p>
+                  {documentToReactComponents(JSON.parse(doulaData.intro.raw), options)}
+                </p>
+                </div>
+              </article>
+              <h3 id="dynamic-styles" style={{textAlign: "center"}}>Testimonials</h3>
+              <div className="post-feed" style={{flexWrap: "nowrap", marginLeft: "145px", marginRight: "145px"}}>
                 <article className={`testmonial-card post no-image`}>
                   <div className="testmonial-card-link">
                     <div className="post-card-content">
-                      {doulaData.testmonial[0].testmonial1}
+                      <h2 className="post-card-title" style={{textAlign: "center"}}>
+                        {doulaData.testmonial[0].testmonial1}
+                      </h2>
                     </div>
                   </div>
                 </article>
-              </div>
-              <article className="post-content page-template no-image">
-                <div className="post-content-body" style={{marginLeft: "145px", marginRight: "145px", paddingBottom: "0px"}}>
-                <h2>
-                  {documentToReactComponents(JSON.parse(doulaData.intro.raw), options)}
-                </h2>
+                <article className={`testmonial-card post no-image`}>
+                  <div className="testmonial-card-link">
+                    <div className="post-card-content" style={{paddingBottom: "0px", paddingTop: "0px"}}>
+                    <iframe
+                        src={doulaData.testmonial[0].videoTestimonial.file.url}
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        frameBorder="0"
+                        webkitallowfullscreen="true"
+                        mozallowfullscreen="true"
+                        allowFullScreen
+                        style={{height: "21vw"}}
+                      />
+                    {/**  <video controls>
+                        <source src={doulaData.testmonial[0].videoTestimonial.file.url} type="video/mp4" />
+                      </video>*/}
+                    </div>
+                  </div>
+              </article>
+              <article className={`testmonial-card post no-image`}>
+                <div className="testmonial-card-link">
+                  <div className="post-card-content">
+                    {doulaData.testmonial[0].testmonial1}
+                  </div>
                 </div>
               </article>
+            </div>
+            <article className="post-content page-template no-image">
+              <div className="post-content-body" style={{marginLeft: "145px", marginRight: "145px", paddingBottom: "0px"}}>
+              <p>
+                {documentToReactComponents(JSON.parse(doulaData.creativeCycle.raw), options)}
+              </p>
+              </div>
+            </article>
                     <article className="post-content page-template no-image">
                       <div className="post-content-body" style={{marginLeft: "145px", marginRight: "145px"}}>
                         <Faq
@@ -186,6 +194,9 @@ const indexQuery = graphql`
         }
       }
       intro {
+        raw
+      }
+      creativeCycle {
         raw
       }
     }
