@@ -145,40 +145,55 @@ const Doula = ({ data }, location) => {
               </p>
             </div>
           </article>
-          {/**<h3 id="dynamic-styles" style={{textAlign: "center"}}>Testimonials</h3>
-              <div className="post-feed" style={{flexWrap: "nowrap", marginLeft: "145px", marginRight: "145px"}}>
-                <article className={`testmonial-card post no-image`}>
-                  <div className="testmonial-card-link">
-                    <div className="post-card-content">
-                      <h2 className="post-card-title" style={{textAlign: "center"}}>
-                        {doulaData.testmonial[0].testmonial1}
-                      </h2>
-                    </div>
-                  </div>
-                </article>
-                <article className={`testmonial-card post no-image`}>
-                  <div className="testmonial-card-link">
-                    <div className="post-card-content" style={{paddingBottom: "0px", paddingTop: "0px"}}>
-                    <iframe
-                        src={doulaData.testmonial[0].videoTestimonial.file.url}
-                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                        frameBorder="0"
-                        webkitallowfullscreen="true"
-                        mozallowfullscreen="true"
-                        allowFullScreen
-                        style={{height: "21vw"}}
-                      />
-                    </div>
-                  </div>
-              </article>
-              <article className={`testmonial-card post no-image`}>
-                <div className="testmonial-card-link">
-                  <div className="post-card-content">
+          <h3 id="dynamic-styles" style={{ textAlign: "center" }}>
+            Testimonials
+          </h3>
+          <div
+            className="post-feed"
+            style={{
+              flexWrap: "nowrap",
+              marginLeft: "145px",
+              marginRight: "145px",
+            }}
+          >
+            <article className={`testmonial-card post no-image`}>
+              <div className="testmonial-card-link">
+                <div className="post-card-content">
+                  <h2
+                    className="post-card-title"
+                    style={{ textAlign: "center" }}
+                  >
                     {doulaData.testmonial[0].testmonial1}
-                  </div>
+                  </h2>
                 </div>
-              </article>
-            </div>*/}
+              </div>
+            </article>
+            <article className={`testmonial-card post no-image`}>
+              <div className="testmonial-card-link">
+                <div
+                  className="post-card-content"
+                  style={{ paddingBottom: "0px", paddingTop: "0px" }}
+                >
+                  <iframe
+                    src={doulaData.testmonial[0].videoTestimonial.file.url}
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    frameBorder="0"
+                    webkitallowfullscreen="true"
+                    mozallowfullscreen="true"
+                    allowFullScreen
+                    style={{ height: "21vw" }}
+                  />
+                </div>
+              </div>
+            </article>
+            <article className={`testmonial-card post no-image`}>
+              <div className="testmonial-card-link">
+                <div className="post-card-content">
+                  {doulaData.testmonial[0].testmonial1}
+                </div>
+              </div>
+            </article>
+          </div>
           <article
             className="post-content page-template no-image"
             style={{ paddingTop: "0px" }}
