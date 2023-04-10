@@ -84,6 +84,7 @@ const config = {
 const Doula = ({ data }, location) => {
   const siteTitle = data.site.siteMetadata.title
   const doulaData = data.contentfulDoulaPage
+  console.log("doulaData", doulaData)
   const posts = data.allChecProduct.edges
   let rows = []
   let testmonialData = []
@@ -97,7 +98,7 @@ const Doula = ({ data }, location) => {
     }
     rows.push(row)
   })
-  let faqData = { title: "Got a problem?", rows: rows }
+  let faqData = { title: "FAQs", rows: rows }
 
   const is = data.contentfulDoulaPage.featuredImages
   let images = []
@@ -117,7 +118,7 @@ const Doula = ({ data }, location) => {
       />
       <div className="post-feed" style={{ flexDirection: "column" }}>
         <article className="post-content page-template no-image">
-          <header className="page-slider">
+          <header className="page-slider" style={{ paddingTop: "0px" }}>
             <SimpleImageSlider
               width={896}
               height={504}
@@ -158,38 +159,51 @@ const Doula = ({ data }, location) => {
           >
             <article className={`testmonial-card post no-image`}>
               <div className="testmonial-card-link">
-                <div className="post-card-content">
+                <div className="testmonial-card-content">
                   <h2
-                    className="post-card-title"
+                    className="events-card-title"
                     style={{ textAlign: "center" }}
                   >
-                    {doulaData.testmonial[0].testmonial1}
+                    {doulaData.testmonial[0].client}
                   </h2>
+                  {documentToReactComponents(
+                    JSON.parse(doulaData.testmonial[0].clientDetails.raw),
+                    options
+                  )}
                 </div>
               </div>
             </article>
             <article className={`testmonial-card post no-image`}>
               <div className="testmonial-card-link">
                 <div
-                  className="post-card-content"
-                  style={{ paddingBottom: "0px", paddingTop: "0px" }}
+                  className="testmonial-card-content"
+                  style={{ margin: "0px" }}
                 >
                   <iframe
                     src={doulaData.testmonial[0].videoTestimonial.file.url}
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
                     frameBorder="0"
                     webkitallowfullscreen="true"
                     mozallowfullscreen="true"
                     allowFullScreen
-                    style={{ height: "21vw" }}
+                    style={{ height: "21vw", width: "100%" }}
                   />
                 </div>
               </div>
             </article>
             <article className={`testmonial-card post no-image`}>
               <div className="testmonial-card-link">
-                <div className="post-card-content">
-                  {doulaData.testmonial[0].testmonial1}
+                <div className="testmonial-card-content">
+                  <h2
+                    className="events-card-title"
+                    style={{ textAlign: "center" }}
+                  >
+                    {doulaData.testmonial[0].clientTitle}
+                  </h2>
+                  {documentToReactComponents(
+                    JSON.parse(doulaData.testmonial[0].clientAchievements.raw),
+                    options
+                  )}
                 </div>
               </div>
             </article>
@@ -250,8 +264,14 @@ const indexQuery = graphql`
         }
       }
       testmonial {
-        testmonial1
-        testmonial2
+        client
+        clientTitle
+        clientDetails {
+          raw
+        }
+        clientAchievements {
+          raw
+        }
         videoTestimonial {
           file {
             url

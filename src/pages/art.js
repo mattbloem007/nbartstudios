@@ -102,7 +102,7 @@ const Art = ({ data }, location) => {
                         >
                           <div className="post-card-content">
                             <h2
-                              className="post-card-title"
+                              className="art-card-title"
                               style={{ textAlign: "center" }}
                             >
                               {item.itemName}
@@ -113,7 +113,7 @@ const Art = ({ data }, location) => {
                         <Link to="/" className="post-card-link">
                           <div className="post-card-content">
                             <h2
-                              className="post-card-title"
+                              className="art-card-title"
                               style={{ textAlign: "center" }}
                             >
                               {item.itemName}
