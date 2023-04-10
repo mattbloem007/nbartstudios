@@ -73,7 +73,7 @@
     "url": "git+https://github.com/ImedAdel/gatsby-london.git"
   },
   "scripts": {
-    "build": "gatsby build",
+    "build": "export NODE_OPTIONS=--openssl-legacy-provider && gatsby build",
     "clean": "gatsby clean",
     "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
