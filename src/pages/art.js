@@ -13,38 +13,42 @@ import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types"
 import { renderRichText } from "gatsby-source-contentful/rich-text"
 //TODO: switch to staticQuery, get rid of comments, remove unnecessary components, export as draft template
 
-const Bold = ({ children }) => <span style={{fontWeight:"bold"}}>{children}</span>
+const Bold = ({ children }) => (
+  <span style={{ fontWeight: "bold" }}>{children}</span>
+)
 const Text = ({ children }) => <p>{children}</p>
 
 const options = {
   renderMark: {
     [MARKS.BOLD]: text => {
       console.log("text", text)
-      return(
-        <Bold>{text}</Bold>
-      )},
+      return <Bold>{text}</Bold>
+    },
   },
   renderNode: {
     [INLINES.HYPERLINK]: (node, children) => {
       console.log("INLINES NODE", node)
-      if (node.data.uri.indexOf('youtube.com') >= 0) {
+      if (node.data.uri.indexOf("youtube.com") >= 0) {
         return (
-          <div style={{display: "flex", justifyContent:"center"}}>
-            <iframe width="340" height="315" src={node.data.uri} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <iframe
+              width="340"
+              height="315"
+              src={node.data.uri}
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
           </div>
         )
-      }
-      else {
-        return (
-          <a href={node.data.uri}>{children}</a>
-        )
+      } else {
+        return <a href={node.data.uri}>{children}</a>
       }
     },
     [BLOCKS.PARAGRAPH]: (node, children) => {
       console.log(node)
-      return (
-        <Text>{children}</Text>
-      )
+      return <Text>{children}</Text>
     },
     [BLOCKS.EMBEDDED_ASSET]: node => {
       return (
@@ -59,56 +63,64 @@ const options = {
   },
 }
 
-
 const Art = ({ data }, location) => {
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allContentfulArtPageMenu.edges
   let postCounter = 0
 
   return (
-    <Layout title={siteTitle}>
+    <>
       <SEO
         title="All posts"
         keywords={[`blog`, `gatsby`, `javascript`, `react`]}
       />
-      <div className="post-feed" style={{flexDirection: "column"}}>
+      <div className="post-feed" style={{ flexDirection: "column" }}>
         {posts.map(({ node }) => {
           postCounter++
           return (
             <article className="post-content page-template no-image">
-                <h3 id="dynamic-styles">{node.title}</h3>
-                <div className="post-feed" style={{flexWrap: "nowrap"}}>
-                {
-                  node.menuItems.map(item => {
+              <h3 id="dynamic-styles">{node.title}</h3>
+              <div className="post-feed" style={{ flexWrap: "nowrap" }}>
+                {node.menuItems.map(item => {
                   console.log("catalogue", item.catalogue)
                   return (
                     <article
-                      className={`post-card ${postCounter % 3 === 0 && `post-card-large` } post
+                      className={`post-card ${postCounter % 3 === 0 &&
+                        `post-card-large`} post
                       ${item ? `with-image` : `no-image`}`}
                       style={
                         item.image && {
-                          backgroundImage: `url(${
-                            item.image.gatsbyImageData.images.fallback.src
-                          })`,
+                          backgroundImage: `url(${item.image.gatsbyImageData.images.fallback.src})`,
                         }
                       }
                     >
-                      {item.catalogue ? <a href={item.catalogue.file.url} target="_blank" className="post-card-link">
-                        <div className="post-card-content">
-                          <h2 className="post-card-title" style={{textAlign: "center"}}>
-                            {item.itemName}
-                          </h2>
-                        </div>
-                      </a>
-                      :
-                      <Link to="/" className="post-card-link">
-                        <div className="post-card-content">
-                          <h2 className="post-card-title" style={{textAlign: "center"}}>
-                            {item.itemName}
-                          </h2>
-                        </div>
-                      </Link>
-                  }
+                      {item.catalogue ? (
+                        <a
+                          href={item.catalogue.file.url}
+                          target="_blank"
+                          className="post-card-link"
+                        >
+                          <div className="post-card-content">
+                            <h2
+                              className="post-card-title"
+                              style={{ textAlign: "center" }}
+                            >
+                              {item.itemName}
+                            </h2>
+                          </div>
+                        </a>
+                      ) : (
+                        <Link to="/" className="post-card-link">
+                          <div className="post-card-content">
+                            <h2
+                              className="post-card-title"
+                              style={{ textAlign: "center" }}
+                            >
+                              {item.itemName}
+                            </h2>
+                          </div>
+                        </Link>
+                      )}
                     </article>
                   )
                 })}
@@ -125,7 +137,7 @@ const Art = ({ data }, location) => {
           // )
         })}
       </div>
-    </Layout>
+    </>
   )
 }
 
@@ -138,7 +150,7 @@ const indexQuery = graphql`
       }
     }
 
-    allContentfulArtPageMenu(sort: {order: ASC, fields: order})   {
+    allContentfulArtPageMenu(sort: { order: ASC, fields: order }) {
       edges {
         node {
           title

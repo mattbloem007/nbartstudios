@@ -11,14 +11,9 @@ class EventTemplate extends React.Component {
     const siteTitle = this.props.data.site.siteMetadata.title
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <SEO
-          title={post.name}
-          description={post.description}
-        />
-        <article
-          className={`post-content ${post.image || `no-image`}`}
-        >
+      <>
+        <SEO title={post.name} description={post.description} />
+        <article className={`post-content ${post.image || `no-image`}`}>
           <header className="post-content-header">
             <h1 className="post-content-title">{post.name}</h1>
           </header>
@@ -29,16 +24,13 @@ class EventTemplate extends React.Component {
 
           {post.image && (
             <div className="post-content-image">
-              <img
-                className="kg-image"
-                src={post.image.url}
-              />
+              <img className="kg-image" src={post.image.url} />
             </div>
           )}
 
           <div
             className="post-content-body"
-            style={{textAlign: "center"}}
+            style={{ textAlign: "center" }}
             dangerouslySetInnerHTML={{ __html: post.description }}
           />
 
@@ -49,7 +41,7 @@ class EventTemplate extends React.Component {
         default byline. */}
           </footer>
         </article>
-      </Layout>
+      </>
     )
   }
 }
@@ -83,19 +75,19 @@ export const pageQuery = graphql`
     }
 
     checProduct(permalink: { eq: $slug }) {
-          id
-          name
-          image {
-            url
-          }
-          categories {
-            name
-          }
-          price {
-            formatted_with_symbol
-          }
-          description
-          permalink
-        }
+      id
+      name
+      image {
+        url
+      }
+      categories {
+        name
+      }
+      price {
+        formatted_with_symbol
+      }
+      description
+      permalink
+    }
   }
 `

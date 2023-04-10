@@ -1,9 +1,21 @@
 import React from "react"
 import { Link } from "gatsby"
+import { CircleSpinner } from "react-spinners-kit"
+import CartNav from "./cartnav"
+import "../utils/scss/style.scss"
 
 const Layout = props => {
   const { title, children } = props
   const [toggleNav, setToggleNav] = React.useState(false)
+  let {
+    cart,
+    onUpdateCartQty,
+    onRemoveFromCart,
+    onEmptyCart,
+    isCartVisible,
+    setCartVisible,
+  } = props
+
   return (
     <div className={`site-wrapper ${toggleNav ? `site-head-open` : ``}`}>
       <header className="site-head">
@@ -39,7 +51,7 @@ const Layout = props => {
                 <Link to={`/doula`}>Creativity Doula</Link>
               </li>
               <li className="nav-about" role="menuitem">
-                <Link to={`/events`}>Events</Link>
+                <Link to={`/store`}>Store</Link>
               </li>
             </ul>
           </nav>
@@ -74,6 +86,20 @@ const Layout = props => {
               >
                 RSS
               </Link>
+              <div>
+                {cart && Object.entries(cart).length === 0 ? (
+                  <CircleSpinner size={30} loading={true} />
+                ) : (
+                  <CartNav
+                    cart={cart}
+                    onUpdateCartQty={onUpdateCartQty}
+                    onRemoveFromCart={onRemoveFromCart}
+                    onEmptyCart={onEmptyCart}
+                    isCartVisible={isCartVisible}
+                    setCartVisible={setCartVisible}
+                  />
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -85,7 +111,6 @@ const Layout = props => {
       </main>
       <footer className="site-foot">
         &copy; {new Date().getFullYear()} <Link to={`/`}>{title}</Link>
-
       </footer>
     </div>
   )

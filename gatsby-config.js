@@ -1,6 +1,6 @@
 const urljoin = require("url-join")
 const siteConfig = require("./siteConfig")
-require("dotenv").config();
+require("dotenv").config()
 
 module.exports = {
   siteMetadata: {
@@ -76,9 +76,9 @@ module.exports = {
     {
       resolve: `gatsby-source-contentful`,
       options: {
-        spaceId: process.env.CONTENTFUL_SPACE_ID || '',
-        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || '',
-        host: process.env.CONTENTFUL_HOST
+        spaceId: process.env.CONTENTFUL_SPACE_ID || "",
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || "",
+        host: process.env.CONTENTFUL_HOST,
       },
     },
     {
@@ -115,5 +115,6 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-sass`,
   ],
 }
