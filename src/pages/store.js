@@ -10,7 +10,6 @@ import "../utils/css/screen.css"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types"
 import { renderRichText } from "gatsby-source-contentful/rich-text"
-//TODO: switch to staticQuery, get rid of comments, remove unnecessary components, export as draft template
 
 const Bold = ({ children }) => (
   <span style={{ fontWeight: "bold" }}>{children}</span>
@@ -97,21 +96,39 @@ const Store = ({ data }, location) => {
             </div>
           </div>
           <div style={{ display: "flex" }}>
-            <div>
+            <div style={{ width: "30%" }}>
               <div className="container">
-                <div className="col-lg-12">
+                <div>
                   <div className="page-top">
-                    <h1 className="title_holder">Categories</h1>
-                    <p
-                      onClick={() => setProducts({ products })}
-                    >{`All ${products.length}`}</p>
+                    <h2 className="post-card-title">Categories</h2>
+                    <div
+                      className="row"
+                      style={{
+                        paddingTop: "10px",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <span
+                        onClick={() => setProducts({ products })}
+                      >{`All`}</span>
+                      <span className="categoryBadge">{products.length}</span>
+                    </div>
                     {categories.map(node => {
                       console.log("cat", node.node)
                       return (
-                        <div>
-                          <p
+                        <div
+                          className="row"
+                          style={{
+                            paddingTop: "10px",
+                            justifyContent: "space-between",
+                          }}
+                        >
+                          <span
                             onClick={() => filterItems(node.node.name)}
-                          >{`${node.node.name} ${node.node.products.length}`}</p>
+                          >{`${node.node.name}`}</span>
+                          <span className="categoryBadge">
+                            {node.node.products.length}
+                          </span>
                         </div>
                       )
                     })}
@@ -144,9 +161,11 @@ const Store = ({ data }, location) => {
                         <p style={{ margin: "0 0 0.5em 0" }}>
                           <Link to={node.permalink}>{node.name}</Link>
                         </p>
-                        <span class="category">Cacao Journeys</span>
+                        <span class="category">{node.categories[0].name}</span>
                         <br />
-                        <span class="category">R1,111.00</span>
+                        <span class="category">
+                          {node.price.formatted_with_symbol}
+                        </span>
                       </div>
                     </div>
                   </div>

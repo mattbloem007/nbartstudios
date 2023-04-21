@@ -24,7 +24,7 @@ const CartNav = props => {
       <div
         className={scroll ? "cartnav2 cart-btn-open" : "cartnav cart-btn-open"}
       >
-        <FaShoppingBag size={28} style={{ color: "white" }} />
+        <FaShoppingBag size={28} style={{ color: "#131313" }} />
         {cart ? <span className="cartBadge">{cart.total_items}</span> : ""}
       </div>
     </div>

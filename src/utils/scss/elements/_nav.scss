@@ -1,7 +1,7 @@
 .cartnav {
   position: fixed;
-  top: 2rem;
-  right: 3.25rem;
+  top: 3.4rem;
+  right: 1.7rem;
   z-index: 999;
 
   @media #{$lg-layout} {
@@ -108,6 +108,26 @@
   margin-left: -0.1rem;
   border-radius: 50%;
   vertical-align: super;
+
+  @media #{$lg-layout} {
+    padding: 0 0.85rem;
+  }
+  @media #{$md-layout} {
+    padding: 0 0.85rem;
+  }
+  @media #{$sm-layout} {
+    padding: 0 0.85rem;
+  }
+}
+
+.categoryBadge {
+  font-size: 14px;
+  font-weight: bold;
+  background-color: darkmagenta;
+  color: white;
+  padding: 0 0.65rem;
+  margin-left: 5px;
+  border-radius: 50%;
 
   @media #{$lg-layout} {
     padding: 0 0.85rem;

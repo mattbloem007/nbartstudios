@@ -11,7 +11,7 @@ export default props => (
       }
     }
   >
-    <Link to={`/events/${props.node.permalink}`} className="post-card-link">
+    <Link to={`/store/${props.node.permalink}`} className="post-card-link">
       <div className="post-card-detail">
         <h4 className="events-card-title">
           {props.node.name || props.node.slug}

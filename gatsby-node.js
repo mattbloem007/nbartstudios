@@ -6,6 +6,7 @@ exports.createPages = ({ graphql, actions }) => {
 
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
   const eventPost = path.resolve(`./src/templates/event.js`)
+  const productPage = path.resolve(`./src/templates/product.js`)
   return graphql(
     `
       {
@@ -31,6 +32,9 @@ exports.createPages = ({ graphql, actions }) => {
               id
               permalink
               name
+              image {
+                url
+              }
             }
           }
         }
@@ -44,6 +48,7 @@ exports.createPages = ({ graphql, actions }) => {
     // Create blog posts pages.
     const posts = result.data.allMarkdownRemark.edges
     const events = result.data.allChecProduct.edges
+    const products = result.data.allChecProduct.edges
 
     posts.forEach((post, index) => {
       const previous = index === posts.length - 1 ? null : posts[index + 1].node
@@ -61,12 +66,24 @@ exports.createPages = ({ graphql, actions }) => {
     })
 
     events.forEach((event, index) => {
-
       createPage({
         path: `/events/${event.node.permalink}`,
         component: eventPost,
         context: {
           slug: event.node.permalink,
+        },
+      })
+    })
+
+    products.forEach(product => {
+      let urlString = product.node.image.url.split("|")
+      let url = urlString[0] + "%7C" + urlString[1]
+      createPage({
+        path: `/store/${product.node.permalink}`,
+        component: productPage,
+        context: {
+          id: product.node.id,
+          url,
         },
       })
     })

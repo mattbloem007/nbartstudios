@@ -86,9 +86,16 @@ const Layout = props => {
               >
                 RSS
               </Link>
-              <div>
+              <div
+                style={{
+                  display: "block",
+                  margin: "0px",
+                  padding: "10px 12px",
+                  fontWeight: "600",
+                }}
+              >
                 {cart && Object.entries(cart).length === 0 ? (
-                  <CircleSpinner size={30} loading={true} />
+                  <CircleSpinner size={30} loading={true} color="#131313" />
                 ) : (
                   <CartNav
                     cart={cart}

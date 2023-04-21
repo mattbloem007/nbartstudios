@@ -71,6 +71,7 @@ const Cart = props => {
         background: "#000000",
         paddingTop: "20px",
         borderRadius: "20px",
+        color: "white",
       }}
     >
       <div className="col-lg-12">
@@ -88,6 +89,7 @@ const Cart = props => {
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-between",
+            alignItems: "center",
             marginTop: "23px",
           }}
         >
@@ -102,7 +104,7 @@ const Cart = props => {
           >
             <span style={{ whiteSpace: "nowrap" }}>Empty Cart</span>
           </button>
-          <a href="/checkout">
+          <a href="/checkout" style={{ opacity: "1" }}>
             <button
               className="rn-button btn-white"
               style={{

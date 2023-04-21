@@ -405,7 +405,7 @@ body {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  margin: 0px 0px 100px 100px;
+  margin: 0px 0px 100px 0px;
   overflow-x: hidden;
   overflow-y: auto;
   height: 500px;
@@ -656,8 +656,9 @@ body {
 /* ---------------------------------------------------------- */
 
 .post-content {
-  /*max-width: 720px;
-    margin: 0 auto;*/
+  /* max-width: 720px;
+    margin: 0 auto; */
+  margin: 0 6vw;
   padding: 6vw 0;
 }
 
@@ -690,7 +691,7 @@ body {
 .post-content-image {
   margin: 4vw 0;
   position: relative;
-  width: 75vw;
+  width: 44vw;
   min-width: 100%;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);

@@ -14,6 +14,13 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-source-open-exchange-rates`,
+      options: {
+        appId: process.env.OPEN_EXCHANGE_RATES_APP_ID,
+        base: "ZAR",
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/blog`,

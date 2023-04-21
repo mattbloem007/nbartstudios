@@ -1,6 +1,6 @@
 import Commerce from "@chec/commerce.js"
 
-const checAPIKey = "pk_47885dbdd0e55e008c1c4982d9e35fb2c99247830bdc9"
+const checAPIKey = "pk_49693b1485ec977a4c6d45188927e8a09d8c6b49e69b2"
 const devEnvironment = process.env.NODE_ENV === "development"
 
 const commerceConfig = {

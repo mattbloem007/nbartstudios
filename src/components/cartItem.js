@@ -20,7 +20,6 @@ const CartItem = props => {
         <div className="cart-item details-qty">
           <button
             type="button"
-            style={{ color: "white" }}
             onClick={() => handleUpdateCartQty(item.id, item.quantity - 1)}
           >
             -
@@ -28,7 +27,6 @@ const CartItem = props => {
           <p>{loading ? "Loading..." : item.quantity}</p>
           <button
             type="button"
-            style={{ color: "white" }}
             onClick={() => handleUpdateCartQty(item.id, item.quantity + 1)}
           >
             +
@@ -48,7 +46,7 @@ const CartItem = props => {
         }}
         onClick={handleRemoveFromCart}
       >
-        Remove
+        <span style={{ whiteSpace: "nowrap" }}>Remove</span>
       </button>
     </div>
   )
