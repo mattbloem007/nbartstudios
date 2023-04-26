@@ -110,7 +110,10 @@ const Art = ({ data }, location) => {
                           </div>
                         </a>
                       ) : (
-                        <Link to="/" className="post-card-link">
+                        <Link
+                          to={`/performances/${item.slug}`}
+                          className="post-card-link"
+                        >
                           <div className="post-card-content">
                             <h2
                               className="art-card-title"
@@ -156,6 +159,7 @@ const indexQuery = graphql`
           title
           order
           menuItems {
+            slug
             itemName
             image {
               gatsbyImageData(layout: FULL_WIDTH)

@@ -18,7 +18,9 @@ export default props => (
         </h4>
       </div>
       <div className="post-card-content">
-        <h6 className="events-card-title" style={{ paddingTop: "20px" }}></h6>
+        <h6 className="events-card-title" style={{ paddingTop: "20px" }}>
+          {props.node.seo ? props.node.seo.title : ""}
+        </h6>
       </div>
     </Link>
   </article>

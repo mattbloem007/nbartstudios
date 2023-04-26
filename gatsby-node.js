@@ -7,6 +7,8 @@ exports.createPages = ({ graphql, actions }) => {
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
   const eventPost = path.resolve(`./src/templates/event.js`)
   const productPage = path.resolve(`./src/templates/product.js`)
+  const performancePage = path.resolve(`./src/templates/performances.js`)
+
   return graphql(
     `
       {
@@ -38,6 +40,25 @@ exports.createPages = ({ graphql, actions }) => {
             }
           }
         }
+
+        allContentfulPerformancePage {
+          edges {
+            node {
+              heading
+            }
+          }
+        }
+
+        allContentfulArtPageFeed {
+          edges {
+            node {
+              slug
+              catalogue {
+                id
+              }
+            }
+          }
+        }
       }
     `
   ).then(result => {
@@ -49,7 +70,8 @@ exports.createPages = ({ graphql, actions }) => {
     const posts = result.data.allMarkdownRemark.edges
     const events = result.data.allChecProduct.edges
     const products = result.data.allChecProduct.edges
-
+    const performances = result.data.allContentfulArtPageFeed.edges
+    console.log("performances", performances[0].node)
     posts.forEach((post, index) => {
       const previous = index === posts.length - 1 ? null : posts[index + 1].node
       const next = index === 0 ? null : posts[index - 1].node
@@ -86,6 +108,20 @@ exports.createPages = ({ graphql, actions }) => {
           url,
         },
       })
+    })
+
+    performances.forEach((node, index) => {
+      console.log("slug", node.node.slug)
+      if (node.node.slug && !node.node.catalogue) {
+        console.log("in here")
+        createPage({
+          path: `/performances/${node.node.slug}`,
+          component: performancePage,
+          context: {
+            slug: node.node.slug,
+          },
+        })
+      }
     })
 
     return null

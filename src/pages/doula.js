@@ -308,6 +308,9 @@ const indexQuery = graphql`
             formatted_with_symbol
           }
           permalink
+          seo {
+            title
+          }
         }
       }
     }
