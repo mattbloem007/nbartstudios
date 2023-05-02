@@ -522,6 +522,7 @@ body {
   align-items: center;
   justify-content: center;
   position: absolute;
+  text-align: center;
   top: 0;
   right: 0;
   bottom: 0;
@@ -539,7 +540,7 @@ body {
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 100px;
+  top: 0;
   right: 0;
   bottom: 0;
   left: 0;
@@ -601,9 +602,8 @@ body {
 .events-card-title {
   margin: 0;
   display: inline-block;
-  font-size: 2.4rem;
+  font-size: 2rem;
   transition: all 0.3s cubic-bezier(0.33, 0, 0.2, 1);
-  margin-bottom: 40px;
 }
 
 /* Posts without images */

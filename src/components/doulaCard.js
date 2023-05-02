@@ -12,13 +12,14 @@ export default props => (
     }
   >
     <Link to={`/store/${props.node.permalink}`} className="post-card-link">
-      <div className="post-card-detail">
+      <div
+        className="post-card-detail"
+        style={{ paddingLeft: "50px", paddingRight: "50px" }}
+      >
         <h4 className="events-card-title">
           {props.node.name || props.node.slug}
         </h4>
-      </div>
-      <div className="post-card-content">
-        <h6 className="events-card-title" style={{ paddingTop: "20px" }}>
+        <h6 className="events-card-title" style={{ paddingTop: "10px" }}>
           {props.node.seo ? props.node.seo.title : ""}
         </h6>
       </div>

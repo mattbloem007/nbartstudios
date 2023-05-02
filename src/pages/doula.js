@@ -7,6 +7,7 @@ import Faq from "react-faq-component"
 import Img from "gatsby-image"
 import SimpleImageSlider from "react-simple-image-slider"
 import DoulaCard from "../components/doulaCard"
+import TestimonialSlides from "../components/testimonialSlides"
 
 // import "../utils/global.scss"
 import "../utils/normalize.css"
@@ -149,65 +150,8 @@ const Doula = ({ data }, location) => {
           <h3 id="dynamic-styles" style={{ textAlign: "center" }}>
             Testimonials
           </h3>
-          <div
-            className="post-feed"
-            style={{
-              flexWrap: "nowrap",
-              marginLeft: "145px",
-              marginRight: "145px",
-            }}
-          >
-            <article className={`testmonial-card post no-image`}>
-              <div className="testmonial-card-link">
-                <div className="testmonial-card-content">
-                  <h2
-                    className="events-card-title"
-                    style={{ textAlign: "center" }}
-                  >
-                    {doulaData.testmonial[0].client}
-                  </h2>
-                  {documentToReactComponents(
-                    JSON.parse(doulaData.testmonial[0].clientDetails.raw),
-                    options
-                  )}
-                </div>
-              </div>
-            </article>
-            <article className={`testmonial-card post no-image`}>
-              <div className="testmonial-card-link">
-                <div
-                  className="testmonial-card-content"
-                  style={{ margin: "0px" }}
-                >
-                  <iframe
-                    src={doulaData.testmonial[0].videoTestimonial.file.url}
-                    allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-                    frameBorder="0"
-                    webkitallowfullscreen="true"
-                    mozallowfullscreen="true"
-                    allowFullScreen
-                    style={{ height: "21vw", width: "100%" }}
-                  />
-                </div>
-              </div>
-            </article>
-            <article className={`testmonial-card post no-image`}>
-              <div className="testmonial-card-link">
-                <div className="testmonial-card-content">
-                  <h2
-                    className="events-card-title"
-                    style={{ textAlign: "center" }}
-                  >
-                    {doulaData.testmonial[0].clientTitle}
-                  </h2>
-                  {documentToReactComponents(
-                    JSON.parse(doulaData.testmonial[0].clientAchievements.raw),
-                    options
-                  )}
-                </div>
-              </div>
-            </article>
-          </div>
+
+          <TestimonialSlides doulaData={doulaData} />
           <article
             className="post-content page-template no-image"
             style={{ paddingTop: "0px" }}

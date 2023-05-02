@@ -63,28 +63,28 @@ const Layout = props => {
           <div className="site-head-right">
             <div className="social-links">
               <a
-                href="https://www.facebook.com"
-                title="Facebook"
+                href="https://www.instagram.com"
+                title="Instagram"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Facebook
+                Instagram
               </a>
               <a
-                href="https://twitter.com"
-                title="Twitter"
+                href="https://youtube.com"
+                title="YouTube"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Twitter
+                YouTube
               </a>
               <Link
                 to={`/rss.xml`}
-                title="RSS"
+                title="Podcast"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                RSS
+                Podcast
               </Link>
               <div
                 style={{

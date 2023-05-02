@@ -71,7 +71,7 @@ exports.createPages = ({ graphql, actions }) => {
     const events = result.data.allChecProduct.edges
     const products = result.data.allChecProduct.edges
     const performances = result.data.allContentfulArtPageFeed.edges
-    console.log("performances", performances[0].node)
+
     posts.forEach((post, index) => {
       const previous = index === posts.length - 1 ? null : posts[index + 1].node
       const next = index === 0 ? null : posts[index - 1].node
@@ -111,9 +111,7 @@ exports.createPages = ({ graphql, actions }) => {
     })
 
     performances.forEach((node, index) => {
-      console.log("slug", node.node.slug)
       if (node.node.slug && !node.node.catalogue) {
-        console.log("in here")
         createPage({
           path: `/performances/${node.node.slug}`,
           component: performancePage,
