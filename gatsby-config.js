@@ -14,6 +14,19 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: "gatsby-source-anchor",
+      options: {
+        rss: process.env.PODCAST_RSS_URL,
+      },
+    },
+    {
+      resolve: "gatsby-theme-anchor",
+      options: {
+        anchorRss: process.env.PODCAST_RSS_URL,
+        path: `${__dirname}`,
+      },
+    },
+    {
       resolve: `gatsby-source-open-exchange-rates`,
       options: {
         appId: process.env.OPEN_EXCHANGE_RATES_APP_ID,
