@@ -13,17 +13,17 @@ module.exports = {
     },
   },
   plugins: [
-    {
-      resolve: "gatsby-source-anchor",
-      options: {
-        rss: process.env.PODCAST_RSS_URL,
-      },
-    },
+    // {
+    //   resolve: "gatsby-source-anchor",
+    //   options: {
+    //     rss: process.env.PODCAST_RSS_URL,
+    //   },
+    // },
     {
       resolve: "gatsby-theme-anchor",
       options: {
         anchorRss: process.env.PODCAST_RSS_URL,
-        path: `${__dirname}`,
+        path: `${__dirname}/src/podcast`,
       },
     },
     {
@@ -119,18 +119,18 @@ module.exports = {
       },
     },
     `gatsby-plugin-feed`,
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: siteConfig.name,
-        short_name: siteConfig.shortName,
-        start_url: siteConfig.prefix,
-        background_color: `#ffffff`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-manifest`,
+    //   options: {
+    //     name: siteConfig.name,
+    //     short_name: siteConfig.shortName,
+    //     start_url: siteConfig.prefix,
+    //     background_color: `#ffffff`,
+    //     theme_color: `#663399`,
+    //     display: `minimal-ui`,
+    //     icon: `content/assets/gatsby-icon.png`,
+    //   },
+    // },
     `gatsby-plugin-netlify`,
     `gatsby-plugin-image`,
     `gatsby-plugin-offline`,
