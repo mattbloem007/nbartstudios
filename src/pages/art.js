@@ -84,47 +84,61 @@ const Art = ({ data }, location) => {
                 {node.menuItems.map(item => {
                   console.log("catalogue", item.catalogue)
                   return (
-                    <article
-                      className={`post-card ${postCounter % 3 === 0 &&
-                        `post-card-large`} post
-                      ${item ? `with-image` : `no-image`}`}
-                      style={
-                        item.image && {
-                          backgroundImage: `url(${item.image.gatsbyImageData.images.fallback.src})`,
+                    <div className="article">
+                      <article
+                        className={`post-card ${postCounter % 3 === 0 &&
+                          `post-card-large`} post
+                        ${item ? `with-image` : `no-image`}`}
+                        style={
+                          item.image && {
+                            backgroundImage: `url(${item.image.gatsbyImageData.images.fallback.src})`,
+                          }
                         }
-                      }
-                    >
-                      {item.catalogue ? (
-                        <a
-                          href={item.catalogue.file.url}
-                          target="_blank"
-                          className="post-card-link"
-                        >
-                          <div className="post-card-content">
-                            <h2
-                              className="art-card-title"
-                              style={{ textAlign: "center" }}
-                            >
-                              {item.itemName}
-                            </h2>
-                          </div>
-                        </a>
-                      ) : (
-                        <Link
-                          to={`/performances/${item.slug}`}
-                          className="post-card-link"
-                        >
-                          <div className="post-card-content">
-                            <h2
-                              className="art-card-title"
-                              style={{ textAlign: "center" }}
-                            >
-                              {item.itemName}
-                            </h2>
-                          </div>
-                        </Link>
-                      )}
-                    </article>
+                      >
+                        {item.catalogue ? (
+                          <a
+                            href={item.catalogue.file.url}
+                            target="_blank"
+                            className="post-card-link"
+                          >
+                            <div className="post-card-content">
+                              <h2
+                                className="art-card-title"
+                                style={{
+                                  textAlign: "center",
+                                  backgroundColor: "white",
+                                  color: "black",
+                                  opacity: "0.8",
+                                  fontSize: "1.7rem",
+                                }}
+                              >
+                                {item.itemName}
+                              </h2>
+                            </div>
+                          </a>
+                        ) : (
+                          <Link
+                            to={`/performances/${item.slug}`}
+                            className="post-card-link"
+                          >
+                            <div className="post-card-content">
+                              <h2
+                                className="art-card-title"
+                                style={{
+                                  textAlign: "center",
+                                  backgroundColor: "white",
+                                  color: "black",
+                                  opacity: "0.8",
+                                  fontSize: "1.7rem",
+                                }}
+                              >
+                                {item.itemName}
+                              </h2>
+                            </div>
+                          </Link>
+                        )}
+                      </article>
+                    </div>
                   )
                 })}
               </div>

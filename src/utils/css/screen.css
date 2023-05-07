@@ -490,6 +490,29 @@ body {
   counter-increment: posts;
 }
 
+.article {
+  position: relative;
+  flex: 1 1 50%;
+  display: flex;
+  height: 35vw;
+  background: linear-gradient(135deg, #1f1f1f 0%, #111 100%) center center;
+  background-size: cover;
+  overflow: hidden;
+  counter-increment: posts;
+}
+
+.doula-article {
+  margin: 10px 1em;
+  padding-left: 10px;
+  padding-right: 10px;
+  flex: 0 1 33%;
+  position: relative;
+  height: 28vw;
+  background-size: cover;
+  overflow: hidden;
+  counter-increment: posts;
+}
+
 @media (max-width: 700px) {
   .post-card {
     flex: 1 1 100%;
@@ -561,7 +584,9 @@ body {
   bottom: 0;
   left: 0;
   color: #fff;
-  margin: 20px;
+  margin-left: 40px;
+  margin-bottom: 0px;
+  margin-top: 40px;
   /* background: rgba(0,0,0,0.1); */
   opacity: 1;
   transition: opacity 0.5s cubic-bezier(0.33, 0, 0.2, 1);
@@ -578,7 +603,38 @@ body {
 
 .post-card-link:hover .post-card-content {
   opacity: 1;
-  transition: opacity 0.3s cubic-bezier(0.33, 0, 0.2, 1);
+}
+
+.article .post-card {
+  -webkit-transition: all 1s ease; /* Safari and Chrome */
+  -moz-transition: all 1s ease; /* Firefox */
+  -ms-transition: all 1s ease; /* IE 9 */
+  -o-transition: all 1s ease; /* Opera */
+  transition: all 1s ease;
+}
+
+.article:hover .post-card {
+  -webkit-transform: scale(1.25); /* Safari and Chrome */
+  -moz-transform: scale(1.25); /* Firefox */
+  -ms-transform: scale(1.25); /* IE 9 */
+  -o-transform: scale(1.25); /* Opera */
+  transform: scale(1.25);
+}
+
+.doula-article .post-card {
+  -webkit-transition: all 1s ease; /* Safari and Chrome */
+  -moz-transition: all 1s ease; /* Firefox */
+  -ms-transition: all 1s ease; /* IE 9 */
+  -o-transition: all 1s ease; /* Opera */
+  transition: all 1s ease;
+}
+
+.doula-article:hover .post-card {
+  -webkit-transform: scale(1.25); /* Safari and Chrome */
+  -moz-transform: scale(1.25); /* Firefox */
+  -ms-transform: scale(1.25); /* IE 9 */
+  -o-transform: scale(1.25); /* Opera */
+  transform: scale(1.25);
 }
 
 .post-card-title {

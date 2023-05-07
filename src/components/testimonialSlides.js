@@ -9,7 +9,7 @@ import { renderRichText } from "gatsby-source-contentful/rich-text"
 const Bold = ({ children }) => (
   <span style={{ fontWeight: "bold" }}>{children}</span>
 )
-const Text = ({ children }) => <p>{children}</p>
+const Text = ({ children }) => <p style={{ marginBottom: "0px" }}>{children}</p>
 
 const options = {
   renderMark: {
