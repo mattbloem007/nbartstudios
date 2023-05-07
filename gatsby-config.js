@@ -19,13 +19,13 @@ module.exports = {
     //     rss: process.env.PODCAST_RSS_URL,
     //   },
     // },
-    {
-      resolve: "gatsby-theme-anchor",
-      options: {
-        anchorRss: process.env.PODCAST_RSS_URL,
-        path: `${__dirname}/src/podcast`,
-      },
-    },
+    // {
+    //   resolve: "gatsby-theme-anchor",
+    //   options: {
+    //     anchorRss: process.env.PODCAST_RSS_URL,
+    //     path: `${__dirname}/src/podcast`,
+    //   },
+    // },
     {
       resolve: `gatsby-source-open-exchange-rates`,
       options: {
@@ -138,9 +138,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sass`,
       options: {
-        cssLoaderOptions: {
-          camelCase: false,
-        },
+        implementation: require("sass"),
       },
     },
   ],

@@ -9,24 +9,24 @@ exports.createPages = ({ graphql, actions }) => {
   const productPage = path.resolve(`./src/templates/product.js`)
   const performancePage = path.resolve(`./src/templates/performances.js`)
 
-  actions.createPage({
-    path: "/air-it",
-    component: require.resolve("gatsby-theme-anchor/src/templates/Landing.tsx"),
-    context: {
-      name: "Air It",
-    },
-  })
-  actions.createPage({
-    path: "/404-podcasts",
-    component: require.resolve("gatsby-theme-anchor/src/templates/404.tsx"),
-  })
-  actions.createPage({
-    path: "/about-podcasts",
-    component: require.resolve("gatsby-theme-anchor/src/templates/About.tsx"),
-    context: {
-      name: "About Podcasts",
-    },
-  })
+  // actions.createPage({
+  //   path: "/air-it",
+  //   component: require.resolve("gatsby-theme-anchor/src/templates/Landing.tsx"),
+  //   context: {
+  //     name: "Air It",
+  //   },
+  // })
+  // actions.createPage({
+  //   path: "/404-podcasts",
+  //   component: require.resolve("gatsby-theme-anchor/src/templates/404.tsx"),
+  // })
+  // actions.createPage({
+  //   path: "/about-podcasts",
+  //   component: require.resolve("gatsby-theme-anchor/src/templates/About.tsx"),
+  //   context: {
+  //     name: "About Podcasts",
+  //   },
+  // })
 
   return graphql(
     `
