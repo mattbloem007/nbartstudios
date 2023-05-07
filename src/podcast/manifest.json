@@ -1,9 +1,0 @@
-{
-  "name": "Air it",
-  "short_name": "Air it",
-  "start_url": "/",
-  "background_color": "#FFF",
-  "theme_color": "#9C27B0",
-  "display": "minimal-ui",
-  "icon": "content/assets/gatsby-icon.png"
-}
