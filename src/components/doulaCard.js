@@ -26,7 +26,10 @@ export default props => (
             {props.node.name || props.node.slug}
           </h4>
         </div>
-        <div className="post-card-content" style={{ top: "100px" }}>
+        <div
+          className="post-card-content"
+          style={{ top: "80px", fontSize: "1.7rem" }}
+        >
           <h6
             className="events-card-title"
             style={{ paddingTop: "10px", fontSize: "1.5rem" }}
