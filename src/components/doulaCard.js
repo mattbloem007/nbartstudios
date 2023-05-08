@@ -22,14 +22,11 @@ export default props => (
           className="post-card-detail"
           style={{ paddingLeft: "50px", paddingRight: "50px" }}
         >
-          <h4 className="events-card-title">
+          <h4 className="events-card-title" style={{ fontSize: "1.7rem" }}>
             {props.node.name || props.node.slug}
           </h4>
         </div>
-        <div
-          className="post-card-content"
-          style={{ top: "80px", fontSize: "1.7rem" }}
-        >
+        <div className="post-card-content" style={{ top: "100px" }}>
           <h6
             className="events-card-title"
             style={{ paddingTop: "10px", fontSize: "1.5rem" }}
