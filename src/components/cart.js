@@ -2,6 +2,7 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Layout from "../components/layout"
 import CartItem from "../components/cartItem"
+import { CircleSpinner } from "react-spinners-kit"
 
 const Cart = props => {
   let { cart, onUpdateCartQty, onEmptyCart, onRemoveFromCart } = props

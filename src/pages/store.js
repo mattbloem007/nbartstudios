@@ -66,6 +66,12 @@ const Store = ({ data }, location) => {
   const products = data.allChecProduct.edges
   const categories = data.allChecCategory.edges
   const [currProducts, setProducts] = useState({ products })
+  const [active, setActive] = useState({ active: 0 })
+
+  const handleItemClick = value => {
+    console.log("KEY:", value)
+    setActive({ active: value })
+  }
 
   const filterItems = category => {
     console.log("category", category)
@@ -87,7 +93,10 @@ const Store = ({ data }, location) => {
         keywords={[`blog`, `gatsby`, `javascript`, `react`]}
       />
       <div className="post-feed" style={{ flexDirection: "column" }}>
-        <article className="post-content page-template no-image">
+        <article
+          className="post-content page-template no-image"
+          style={{ margin: "0px" }}
+        >
           <div className="container">
             <div className="col-lg-12">
               <div className="page-top">
@@ -101,37 +110,50 @@ const Store = ({ data }, location) => {
                 <div>
                   <div className="page-top">
                     <h2 className="post-card-title">Categories</h2>
-                    <div
-                      className="row"
-                      style={{
-                        paddingTop: "10px",
-                        justifyContent: "space-between",
-                      }}
-                    >
-                      <span
-                        onClick={() => setProducts({ products })}
-                      >{`All`}</span>
-                      <span className="categoryBadge">{products.length}</span>
-                    </div>
-                    {categories.map(node => {
-                      console.log("cat", node.node)
-                      return (
-                        <div
-                          className="row"
-                          style={{
-                            paddingTop: "10px",
-                            justifyContent: "space-between",
-                          }}
+                    <div className="store__nav">
+                      <ul className="store__nav-items">
+                        <li
+                          className="store__nav-item"
+                          key={0}
+                          onClick={() => handleItemClick(0)}
                         >
-                          <span
-                            onClick={() => filterItems(node.node.name)}
-                          >{`${node.node.name}`}</span>
-                          <span className="categoryBadge">
-                            {node.node.products.length}
-                          </span>
-                        </div>
-                      )
-                    })}
+                          <div
+                            className={`store__nav-item-link${
+                              active.active == 0 ? `--active` : ``
+                            }`}
+                          >
+                            <span
+                              onClick={() => setProducts({ products })}
+                            >{`All`}</span>
+                            <span className="categoryBadge">
+                              {products.length}
+                            </span>
+                          </div>
+                        </li>
+                        {categories.map((node, i) => {
+                          return (
+                            <li
+                              className="store__nav-item"
+                              key={i + 1}
+                              onClick={() => handleItemClick(i + 1)}
+                            >
+                              <div
+                                className={`store__nav-item-link${
+                                  active.active == i + 1 ? `--active` : ``
+                                }`}
+                              >
+                                <span
+                                  onClick={() => filterItems(node.node.name)}
+                                >{`${node.node.name}`}</span>
+                                <span className="categoryBadge">
+                                  {node.node.products.length}
+                                </span>
+                              </div>
+                            </li>
+                          )
+                        })}
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
