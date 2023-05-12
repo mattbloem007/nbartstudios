@@ -25,29 +25,19 @@ const options = {
   renderNode: {
     [INLINES.HYPERLINK]: (node, children) => {
       console.log("INLINES NODE", node)
-      if (
-        node.data.uri.includes("youtube.com") ||
-        node.data.uri.includes("youtu.be")
-      ) {
-        // Extract videoId from the URL
-        const match = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/.exec(
-          node.data.uri
-        )
-        const videoId = match && match[7].length === 11 ? match[7] : null
+      if (node.data.uri.indexOf("youtube.com") >= 0) {
         return (
-          videoId && (
-            <section className="video-container">
-              <iframe
-                className="video"
-                title={`https://youtube.com/embed/${videoId}`}
-                src={`https://youtube.com/embed/${videoId}`}
-                allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-                frameBorder="0"
-                allowFullScreen
-                style={{ maxWidth: "100%", width: "100%" }}
-              />
-            </section>
-          )
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <iframe
+              width="340"
+              height="315"
+              src={node.data.uri}
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
         )
       } else {
         return <a href={node.data.uri}>{children}</a>
@@ -70,7 +60,7 @@ const options = {
   },
 }
 
-class PerformanceTemplate extends React.Component {
+class ExhibitionTemplate extends React.Component {
   render() {
     const post = this.props.data.contentfulPerformancePage
     const siteTitle = this.props.data.site.siteMetadata.title
@@ -139,7 +129,7 @@ class PerformanceTemplate extends React.Component {
               style={{ display: "flex", justifyContent: "center" }}
             >
               <button className="button" onClick={() => navigate(-1)}>
-                <i className="arrow left"></i> Back to Perfomances
+                <i className="arrow left"></i> Back to Exibitions
               </button>
             </article>
             <footer className="post-content-footer">
@@ -157,10 +147,10 @@ class PerformanceTemplate extends React.Component {
   }
 }
 
-export default PerformanceTemplate
+export default ExhibitionTemplate
 
 export const pageQuery = graphql`
-  query PerformancesBySlug($slug: String!) {
+  query ExhibitionsBySlug($slug: String!) {
     site {
       siteMetadata {
         title

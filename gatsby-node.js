@@ -8,7 +8,7 @@ exports.createPages = ({ graphql, actions }) => {
   const eventPost = path.resolve(`./src/templates/event.js`)
   const productPage = path.resolve(`./src/templates/product.js`)
   const performancePage = path.resolve(`./src/templates/performances.js`)
-
+  const exhibitionPage = path.resolve(`./src/templates/exhibitions.js`)
   // actions.createPage({
   //   path: "/air-it",
   //   component: require.resolve("gatsby-theme-anchor/src/templates/Landing.tsx"),
@@ -44,18 +44,11 @@ exports.createPages = ({ graphql, actions }) => {
           }
         }
 
-        allContentfulPerformancePage {
-          edges {
-            node {
-              heading
-            }
-          }
-        }
-
         allContentfulArtPageFeed {
           edges {
             node {
               slug
+              typeOfPage
               catalogue {
                 id
               }
@@ -113,10 +106,18 @@ exports.createPages = ({ graphql, actions }) => {
     })
 
     performances.forEach((node, index) => {
-      if (node.node.slug && !node.node.catalogue) {
+      if (node.node.slug && node.node.typeOfPage) {
         createPage({
           path: `/performances/${node.node.slug}`,
           component: performancePage,
+          context: {
+            slug: node.node.slug,
+          },
+        })
+      } else {
+        createPage({
+          path: `/exhibitions/${node.node.slug}`,
+          component: exhibitionPage,
           context: {
             slug: node.node.slug,
           },

@@ -4,6 +4,7 @@ import { graphql, StaticQuery, Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import ArtCard from "../components/artCard"
+import Faq from "react-faq-component"
 
 // import "../utils/global.scss"
 import "../utils/normalize.css"
@@ -63,10 +64,36 @@ const options = {
   },
 }
 
+const styles = {
+  bgColor: "#f8f8f8",
+  titleTextColor: "black",
+  rowTitleColor: "rgb(38, 168, 237)",
+  // rowContentColor: 'grey',
+  // arrowColor: "red",
+}
+
+const config = {
+  // animate: true,
+  arrowIcon: "V",
+  // tabFocus: true
+}
+
 const Art = ({ data }, location) => {
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allContentfulArtPageMenu.edges
+  const artFAQ = data.contentfulArtPageFaq
+
   let postCounter = 0
+  let rows = []
+
+  artFAQ.faqs.map(faq => {
+    let row = {
+      title: faq.problemText,
+      content: JSON.parse(faq.solutionText.raw).content[0].content[0].value,
+    }
+    rows.push(row)
+  })
+  let faqData = { title: "FAQs", rows: rows }
 
   return (
     <>
@@ -82,7 +109,7 @@ const Art = ({ data }, location) => {
               <h3 id="dynamic-styles">{node.title}</h3>
               <div className="post-feed" style={{ flexWrap: "nowrap" }}>
                 {node.menuItems.map(item => {
-                  console.log("catalogue", item.catalogue)
+                  console.log("catalogue", node)
                   return (
                     <div className="article">
                       <article
@@ -95,7 +122,7 @@ const Art = ({ data }, location) => {
                           }
                         }
                       >
-                        {item.catalogue ? (
+                        {item.catalogue && node.typeOfPage === null && (
                           <a
                             href={item.catalogue.file.url}
                             target="_blank"
@@ -116,9 +143,33 @@ const Art = ({ data }, location) => {
                               </h2>
                             </div>
                           </a>
-                        ) : (
+                        )}
+
+                        {node.typeOfPage && (
                           <Link
                             to={`/performances/${item.slug}`}
+                            className="post-card-link"
+                          >
+                            <div className="post-card-content">
+                              <h2
+                                className="art-card-title"
+                                style={{
+                                  textAlign: "center",
+                                  backgroundColor: "white",
+                                  color: "black",
+                                  opacity: "0.8",
+                                  fontSize: "1.7rem",
+                                }}
+                              >
+                                {item.itemName}
+                              </h2>
+                            </div>
+                          </Link>
+                        )}
+
+                        {node.typeOfPage === false && (
+                          <Link
+                            to={`/exhibitions/${item.slug}`}
                             className="post-card-link"
                           >
                             <div className="post-card-content">
@@ -153,6 +204,14 @@ const Art = ({ data }, location) => {
           //   />
           // )
         })}
+        <article className="post-content page-template no-image">
+          <div
+            className="post-content-body"
+            style={{ marginLeft: "145px", marginRight: "145px" }}
+          >
+            <Faq data={faqData} styles={styles} config={config} />
+          </div>
+        </article>
       </div>
     </>
   )
@@ -167,11 +226,21 @@ const indexQuery = graphql`
       }
     }
 
+    contentfulArtPageFaq {
+      faqs {
+        problemText
+        solutionText {
+          raw
+        }
+      }
+    }
+
     allContentfulArtPageMenu(sort: { order: ASC, fields: order }) {
       edges {
         node {
           title
           order
+          typeOfPage
           menuItems {
             slug
             itemName
