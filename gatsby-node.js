@@ -114,7 +114,7 @@ exports.createPages = ({ graphql, actions }) => {
             slug: node.node.slug,
           },
         })
-      } else {
+      } else if (node.node.slug) {
         createPage({
           path: `/exhibitions/${node.node.slug}`,
           component: exhibitionPage,
