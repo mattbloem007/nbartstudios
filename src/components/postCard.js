@@ -20,7 +20,12 @@ export default props => (
           </h2>
         </div>
         <div className="post-card-content" style={{ top: "100px" }}>
-          <h2 className="post-card-title">{props.node.byline}</h2>
+          <h2
+            className="post-card-title"
+            style={{ fontSize: "1.7rem", fontStyle: "italic" }}
+          >
+            {props.node.byline}
+          </h2>
         </div>
       </Link>
     </article>

@@ -120,6 +120,53 @@
   }
 }
 
+.subMenu {
+  //position: relative;
+
+  &__item {
+    display: block;
+    margin: 0;
+    padding: 10px 12px;
+    color: var(--color-base);
+    font-weight: 600;
+    opacity: 0.4;
+    cursor: pointer;
+
+    &__menuList {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      top: 40px;
+      width: 200px;
+      background-color: #f8f8f8;
+      font-weight: bold;
+      position: absolute;
+      //  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+
+      &__none {
+        display: none;
+      }
+    }
+    &:hover {
+      text-decoration: none;
+      opacity: 1;
+    }
+  }
+
+  &__item-link {
+    display: block;
+    margin: 0;
+    padding: 10px 12px;
+    color: var(--color-base);
+    font-weight: 600;
+
+    &:hover {
+      border-bottom: 2px solid #f8f8f8;
+    }
+  }
+}
+
 .categoryBadge {
   font-size: 14px;
   font-weight: bold;

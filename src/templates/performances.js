@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -64,77 +65,93 @@ class PerformanceTemplate extends React.Component {
   render() {
     const post = this.props.data.contentfulPerformancePage
     const siteTitle = this.props.data.site.siteMetadata.title
-    console.log("gallery", post.imagesAndText)
 
     return (
       <>
         <SEO title={post.heading} />
-        <article className={`post-content ${post.image || `no-image`}`}>
-          <header className="post-content-header">
-            <h1 className="post-content-title">{post.heading}</h1>
-          </header>
+        <div className="post-feed" style={{ flexDirection: "column" }}>
+          <article className={`post-content ${post.image || `no-image`}`}>
+            <header className="post-content-header">
+              <h1 className="post-content-title">{post.heading}</h1>
+            </header>
 
-          {post.subheading && (
-            <p class="post-content-excerpt">{post.subheading}</p>
-          )}
+            {post.subheading && (
+              <p class="post-content-excerpt">{post.subheading}</p>
+            )}
 
-          {post.imagesAndText && (
-            <div>
-              {post.imagesAndText.map(item => {
-                return (
-                  <div className="post-feed">
-                    {item.gallery.map(image => {
-                      console.log("image", image)
-                      return (
-                        <article
-                          className={`post-card post
-                      ${image ? `with-image` : `no-image`}`}
-                          style={
-                            image && {
-                              backgroundImage: `url(${image.gatsbyImageData.images.fallback.src})`,
-                            }
-                          }
-                        ></article>
-                      )
-                    })}
+            {post.imagesAndText && (
+              <div>
+                {post.imagesAndText.map(item => {
+                  return (
                     <div
-                      className="post-content-body"
-                      style={{ textAlign: "center", marginTop: "50px" }}
+                      className="post-feed"
+                      style={{ marginLeft: "145px", marginRight: "145px" }}
                     >
-                      {documentToReactComponents(
-                        JSON.parse(item.text.raw),
-                        options
+                      {item.gallery ? (
+                        item.gallery.map(image => {
+                          console.log("image", image)
+                          return (
+                            <GatsbyImage
+                              className="kg-image"
+                              image={image.gatsbyImageData}
+                            />
+                          )
+                        })
+                      ) : (
+                        <div></div>
                       )}
+                      <div
+                        className="post-content-body"
+                        style={{
+                          marginTop: "50px",
+                          marginLeft: "145px",
+                          marginRight: "145px",
+                          paddingBottom: "50px",
+                        }}
+                      >
+                        {item.text ? (
+                          <p>
+                            {documentToReactComponents(
+                              JSON.parse(item.text.raw),
+                              options
+                            )}
+                          </p>
+                        ) : (
+                          <div></div>
+                        )}
+                      </div>
                     </div>
+                  )
+                })}
+              </div>
+            )}
+
+            {/**
+              post.imagesAndText.map(node => {
+                return (
+                  <div
+                    className="post-content-body"
+                    style={{ textAlign: "center" }}
+                  >
+                    {documentToReactComponents(
+                      JSON.parse(node.text.raw),
+                      options
+                    )}
                   </div>
                 )
-              })}
-            </div>
-          )}
+              })
+            */}
 
-          {/**
-            post.imagesAndText.map(node => {
-              return (
-                <div
-                  className="post-content-body"
-                  style={{ textAlign: "center" }}
-                >
-                  {documentToReactComponents(
-                    JSON.parse(node.text.raw),
-                    options
-                  )}
-                </div>
-              )
-            })
+            <footer className="post-content-footer">
+              {/* There are two options for how we display the byline/author-info.
+          If the post has more than one author, we load a specific template
+          from includes/byline-multiple.hbs, otherwise, we just use the
+          default byline.
+
           */}
-
-          <footer className="post-content-footer">
-            {/* There are two options for how we display the byline/author-info.
-        If the post has more than one author, we load a specific template
-        from includes/byline-multiple.hbs, otherwise, we just use the
-        default byline. */}
-          </footer>
-        </article>
+            </footer>
+          </article>
+        </div>
       </>
     )
   }
@@ -165,3 +182,13 @@ export const pageQuery = graphql`
     }
   }
 `
+
+// <article
+//   className={`post-card post
+// ${image ? `with-image` : `no-image`}`}
+//   style={
+//     image && {
+//       backgroundImage: `url(${image.gatsbyImageData.images.fallback.src})`,
+//     }
+//   }
+// ></article>

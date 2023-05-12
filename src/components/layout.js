@@ -7,6 +7,8 @@ import "../utils/scss/style.scss"
 const Layout = props => {
   const { title, children } = props
   const [toggleNav, setToggleNav] = React.useState(false)
+  const [displayPodcast, setDisplayPodcast] = React.useState(false)
+
   let {
     cart,
     onUpdateCartQty,
@@ -15,6 +17,17 @@ const Layout = props => {
     isCartVisible,
     setCartVisible,
   } = props
+
+  const showDropdownMenu = event => {
+    event.preventDefault()
+    setDisplayPodcast(true)
+    document.addEventListener("mouseenter", hideDropdownMenu)
+  }
+
+  const hideDropdownMenu = () => {
+    setDisplayPodcast(false)
+    document.removeEventListener("mouseout", hideDropdownMenu)
+  }
 
   return (
     <div className={`site-wrapper ${toggleNav ? `site-head-open` : ``}`}>
@@ -78,14 +91,25 @@ const Layout = props => {
               >
                 YouTube
               </a>
-              <Link
-                to={`/rss.xml`}
-                title="Podcast"
-                target="_blank"
-                rel="noopener noreferrer"
+              <div
+                className="subMenu"
+                onMouseEnter={e => showDropdownMenu(e)}
+                onMouseLeave={e => hideDropdownMenu(e)}
               >
-                Podcast
-              </Link>
+                <div className="subMenu__item">Podcast</div>
+                {displayPodcast ? (
+                  <ul className="subMenu__item__menuList">
+                    <li className="subMenu__item-link">
+                      <Link to="/">Air it</Link>
+                    </li>
+                    <li className="subMenu__item-link">
+                      <Link to="/">NB Art notes</Link>
+                    </li>
+                  </ul>
+                ) : (
+                  <div></div>
+                )}
+              </div>
               <div
                 style={{
                   display: "block",
