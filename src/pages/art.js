@@ -17,7 +17,7 @@ import { renderRichText } from "gatsby-source-contentful/rich-text"
 const Bold = ({ children }) => (
   <span style={{ fontWeight: "bold" }}>{children}</span>
 )
-const Text = ({ children }) => <p>{children}</p>
+const Text = ({ children }) => <p style={{ marginBottom: "0px" }}>{children}</p>
 
 const options = {
   renderMark: {
@@ -89,7 +89,10 @@ const Art = ({ data }, location) => {
   artFAQ.faqs.map(faq => {
     let row = {
       title: faq.problemText,
-      content: JSON.parse(faq.solutionText.raw).content[0].content[0].value,
+      content: documentToReactComponents(
+        JSON.parse(faq.solutionText.raw),
+        options
+      ),
     }
     rows.push(row)
   })
@@ -139,7 +142,10 @@ const Art = ({ data }, location) => {
                                   fontSize: "1.7rem",
                                 }}
                               >
-                                {item.itemName}
+                                {documentToReactComponents(
+                                  JSON.parse(item.title.raw),
+                                  options
+                                )}
                               </h2>
                             </div>
                           </a>
@@ -161,7 +167,10 @@ const Art = ({ data }, location) => {
                                   fontSize: "1.7rem",
                                 }}
                               >
-                                {item.itemName}
+                                {documentToReactComponents(
+                                  JSON.parse(item.title.raw),
+                                  options
+                                )}
                               </h2>
                             </div>
                           </Link>
@@ -183,7 +192,10 @@ const Art = ({ data }, location) => {
                                   fontSize: "1.7rem",
                                 }}
                               >
-                                {item.itemName}
+                                {documentToReactComponents(
+                                  JSON.parse(item.title.raw),
+                                  options
+                                )}
                               </h2>
                             </div>
                           </Link>
@@ -243,6 +255,9 @@ const indexQuery = graphql`
           typeOfPage
           menuItems {
             slug
+            title {
+              raw
+            }
             itemName
             image {
               gatsbyImageData(layout: FULL_WIDTH)

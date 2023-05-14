@@ -95,11 +95,15 @@ const Doula = ({ data }, location) => {
   doulaData.faq1.map(faq => {
     let row = {
       title: faq.problemText,
-      content: JSON.parse(faq.solutionText.raw).content[0].content[0].value,
+      content: documentToReactComponents(
+        JSON.parse(faq.solutionText.raw),
+        options
+      ),
     }
     rows.push(row)
   })
   let faqData = { title: "FAQs", rows: rows }
+  console.log("FAQ", faqData)
 
   const is = data.contentfulDoulaPage.featuredImages
   let images = []
@@ -236,7 +240,7 @@ const indexQuery = graphql`
     }
 
     allChecProduct(
-      filter: { categories: { elemMatch: { name: { eq: "Workshops" } } } }
+      filter: { categories: { elemMatch: { name: { eq: "Courses" } } } }
     ) {
       edges {
         node {

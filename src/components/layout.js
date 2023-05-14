@@ -84,7 +84,7 @@ const Layout = props => {
                 Instagram
               </a>
               <a
-                href="https://youtube.com"
+                href="https://www.youtube.com/channel/UCFNXuqfq5smXcJ0rio2H4bg"
                 title="YouTube"
                 target="_blank"
                 rel="noopener noreferrer"
