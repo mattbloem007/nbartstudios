@@ -90,11 +90,15 @@ class PerformanceTemplate extends React.Component {
             {post.imagesAndText && (
               <div>
                 {post.imagesAndText.map((item, i) => {
-                  let textRaw = null
+                  let hyperlink = false
                   if (item.text) {
-                    textRaw = JSON.parse(item.text.raw)
+                    if (
+                      item.text.raw.includes("youtu.be") ||
+                      item.text.raw.includes("youtube.com")
+                    ) {
+                      hyperlink = true
+                    }
                   }
-
                   return (
                     <div
                       className="post-feed"
@@ -120,16 +124,12 @@ class PerformanceTemplate extends React.Component {
                       ) : (
                         <div></div>
                       )}
-                      {textRaw && textRaw.content[0].content[i] ? (
-                        textRaw.content[0].content[i].nodeType == "hyperlink" &&
-                        item.text &&
+                      {item.text &&
+                        hyperlink &&
                         documentToReactComponents(
                           JSON.parse(item.text.raw),
                           options
-                        )
-                      ) : (
-                        <div></div>
-                      )}
+                        )}
                       <div
                         className="post-content-body"
                         style={{
@@ -139,19 +139,13 @@ class PerformanceTemplate extends React.Component {
                           paddingBottom: "50px",
                         }}
                       >
-                        {textRaw && textRaw.content[0].content[i] ? (
-                          textRaw.content[0].content[i].nodeType !=
-                            "hyperlink" &&
-                          item.text && (
-                            <p>
-                              {documentToReactComponents(
-                                JSON.parse(item.text.raw),
-                                options
-                              )}
-                            </p>
-                          )
-                        ) : (
-                          <div></div>
+                        {item.text && !hyperlink && (
+                          <p>
+                            {documentToReactComponents(
+                              JSON.parse(item.text.raw),
+                              options
+                            )}
+                          </p>
                         )}
                       </div>
                     </div>
