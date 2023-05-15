@@ -36,7 +36,7 @@ const options = {
         const videoId = match && match[7].length === 11 ? match[7] : null
         return (
           videoId && (
-            <section className="video-container">
+            <article className="post-card no-image" style={{ width: "68vw" }}>
               <iframe
                 className="video"
                 title={`https://youtube.com/embed/${videoId}`}
@@ -46,7 +46,7 @@ const options = {
                 allowFullScreen
                 style={{ maxWidth: "100%", width: "100%" }}
               />
-            </section>
+            </article>
           )
         )
       } else {
@@ -54,7 +54,6 @@ const options = {
       }
     },
     [BLOCKS.PARAGRAPH]: (node, children) => {
-      console.log(node)
       return <Text>{children}</Text>
     },
     [BLOCKS.EMBEDDED_ASSET]: node => {
@@ -74,7 +73,7 @@ class PerformanceTemplate extends React.Component {
   render() {
     const post = this.props.data.contentfulPerformancePage
     const siteTitle = this.props.data.site.siteMetadata.title
-
+    let imageCounter = -1
     return (
       <>
         <SEO title={post.heading} />
@@ -90,7 +89,12 @@ class PerformanceTemplate extends React.Component {
 
             {post.imagesAndText && (
               <div>
-                {post.imagesAndText.map(item => {
+                {post.imagesAndText.map((item, i) => {
+                  let textRaw = null
+                  if (item.text) {
+                    textRaw = JSON.parse(item.text.raw)
+                  }
+
                   return (
                     <div
                       className="post-feed"
@@ -98,14 +102,31 @@ class PerformanceTemplate extends React.Component {
                     >
                       {item.gallery ? (
                         item.gallery.map(image => {
-                          console.log("image", image)
+                          imageCounter++
                           return (
-                            <GatsbyImage
-                              className="kg-image"
-                              image={image.gatsbyImageData}
-                            />
+                            <article
+                              className={`post-card ${imageCounter % 3 === 0 &&
+                                `post-card-large`} ${
+                                image ? `with-image` : `no-image`
+                              }`}
+                            >
+                              <GatsbyImage
+                                className="kg-image"
+                                image={image.gatsbyImageData}
+                              />
+                            </article>
                           )
                         })
+                      ) : (
+                        <div></div>
+                      )}
+                      {textRaw && textRaw.content[0].content[i] ? (
+                        textRaw.content[0].content[i].nodeType == "hyperlink" &&
+                        item.text &&
+                        documentToReactComponents(
+                          JSON.parse(item.text.raw),
+                          options
+                        )
                       ) : (
                         <div></div>
                       )}
@@ -118,13 +139,17 @@ class PerformanceTemplate extends React.Component {
                           paddingBottom: "50px",
                         }}
                       >
-                        {item.text ? (
-                          <p>
-                            {documentToReactComponents(
-                              JSON.parse(item.text.raw),
-                              options
-                            )}
-                          </p>
+                        {textRaw && textRaw.content[0].content[i] ? (
+                          textRaw.content[0].content[i].nodeType !=
+                            "hyperlink" &&
+                          item.text && (
+                            <p>
+                              {documentToReactComponents(
+                                JSON.parse(item.text.raw),
+                                options
+                              )}
+                            </p>
+                          )
                         ) : (
                           <div></div>
                         )}

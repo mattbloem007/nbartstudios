@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql, StaticQuery, Link } from "gatsby"
-
+import { GatsbyImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import ArtCard from "../components/artCard"
@@ -12,7 +12,6 @@ import "../utils/css/screen.css"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types"
 import { renderRichText } from "gatsby-source-contentful/rich-text"
-//TODO: switch to staticQuery, get rid of comments, remove unnecessary components, export as draft template
 
 const Bold = ({ children }) => (
   <span style={{ fontWeight: "bold" }}>{children}</span>
@@ -119,12 +118,11 @@ const Art = ({ data }, location) => {
                         className={`post-card ${postCounter % 3 === 0 &&
                           `post-card-large`} post
                         ${item ? `with-image` : `no-image`}`}
-                        style={
-                          item.image && {
-                            backgroundImage: `url(${item.image.gatsbyImageData.images.fallback.src})`,
-                          }
-                        }
                       >
+                        <GatsbyImage
+                          className="kg-image"
+                          image={item.image.gatsbyImageData}
+                        />
                         {item.catalogue && node.typeOfPage === null && (
                           <a
                             href={item.catalogue.file.url}
