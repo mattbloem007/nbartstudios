@@ -94,7 +94,8 @@ input[type="button"].primary,
 button.primary,
 .button.primary {
   color: var(--color-base) !important;
-  background-color: var(--color-base);
+  background-color: var(--color-bg);
+  border: 2px solid var(--color-base);
   box-shadow: none;
 }
 
@@ -103,5 +104,5 @@ input[type="reset"].primary:hover,
 input[type="button"].primary:hover,
 button.primary:hover,
 .button.primary:hover {
-  background-color: color(var(--color-base) l(-10%));
+  background-color: color(var(--color-bg) l(-10%));
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { graphql } from "gatsby"
+import { graphql, navigate } from "gatsby"
 import Layout from "../components/layout"
 import Img from "gatsby-image"
 import ImageGalleryComponent from "../components/imageGallery"
@@ -83,7 +83,21 @@ const Product = props => {
                 }}
               />
             </div>
-            <div className="col-lg-8" style={{ marginTop: "50px" }}>
+            <div
+              className="col-lg-8"
+              style={{
+                marginTop: "50px",
+                width: "100%",
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
+              <button
+                className="button primary"
+                onClick={() => navigate("/store")}
+              >
+                <i className="arrow left"></i> Back to Store
+              </button>
               <button
                 title=""
                 className="button primary"

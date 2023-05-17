@@ -95,7 +95,7 @@ class TestimonialSlides extends React.Component {
                         webkitallowfullscreen="true"
                         mozallowfullscreen="true"
                         allowFullScreen
-                        style={{ height: "21vw", width: "100%" }}
+                        style={{ height: "21vw", width: "100%", margin: "0px" }}
                       />
                     </div>
                   </div>
