@@ -1,12 +1,12 @@
 .cartnav {
   position: fixed;
   top: 3.4rem;
-  right: 1.7rem;
   z-index: 999;
+  right: 1.7rem;
 
   @media #{$lg-layout} {
-    left: 3.25rem;
-
+    //left: 3.25rem;
+    right: -18rem;
     &.cart-btn-open {
       border: none;
       display: flex;
@@ -14,8 +14,8 @@
     }
   }
   @media #{$md-layout} {
-    left: 3.25rem;
-
+    right: -18rem;
+    top: 3.4rem;
     &.cart-btn-open {
       border: none;
       display: flex;
@@ -23,7 +23,9 @@
     }
   }
   @media #{$sm-layout} {
-    left: 3.25rem;
+    //  left: 3.25rem;
+    top: 1.4rem;
+    right: -18rem;
 
     &.cart-btn-open {
       border: none;

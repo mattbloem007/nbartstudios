@@ -138,8 +138,6 @@ const Doula = ({ data }, location) => {
             <div
               className="post-content-body"
               style={{
-                marginLeft: "145px",
-                marginRight: "145px",
                 paddingBottom: "0px",
               }}
             >
@@ -163,8 +161,6 @@ const Doula = ({ data }, location) => {
             <div
               className="post-content-body"
               style={{
-                marginLeft: "145px",
-                marginRight: "145px",
                 paddingBottom: "0px",
               }}
             >
@@ -182,10 +178,7 @@ const Doula = ({ data }, location) => {
             })}
           </div>
           <article className="post-content page-template no-image">
-            <div
-              className="post-content-body"
-              style={{ marginLeft: "145px", marginRight: "145px" }}
-            >
+            <div className="post-content-body">
               <Faq data={faqData} styles={styles} config={config} />
             </div>
           </article>

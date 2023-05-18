@@ -55,7 +55,7 @@ const Layout = props => {
                 <Link to={`/`}>Home</Link>
               </li>
               <li className="nav-about" role="menuitem">
-                <Link to={`/about`}>About</Link>
+                <Link to={`/store`}>Store</Link>
               </li>
               <li className="nav-elements" role="menuitem">
                 <Link to={`/art`}>Art</Link>
@@ -64,13 +64,16 @@ const Layout = props => {
                 <Link to={`/doula`}>Creativity Doula</Link>
               </li>
               <li className="nav-about" role="menuitem">
-                <Link to={`/store`}>Store</Link>
+                <Link to={`/about`}>About</Link>
+              </li>
+              <li className="nav-about" role="menuitem">
+                <Link to={`/#contact`}>Contact</Link>
               </li>
             </ul>
           </nav>
           <div className="site-head-center">
             <Link className="site-head-logo" to={`/`}>
-              {title}
+              Nicolene Burger
             </Link>
           </div>
           <div className="site-head-right">
@@ -100,10 +103,20 @@ const Layout = props => {
                 {displayPodcast ? (
                   <ul className="subMenu__item__menuList">
                     <li className="subMenu__item-link">
-                      <Link to="/">Air it</Link>
+                      <a
+                        target="_blank"
+                        href="https://podcasters.spotify.com/pod/show/air-it"
+                      >
+                        Air it
+                      </a>
                     </li>
                     <li className="subMenu__item-link">
-                      <Link to="/">NB Art notes</Link>
+                      <a
+                        target="_blank"
+                        href="https://podcasters.spotify.com/pod/show/nicolene-burger"
+                      >
+                        NB Art notes
+                      </a>
                     </li>
                   </ul>
                 ) : (

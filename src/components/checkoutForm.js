@@ -173,7 +173,7 @@ const CheckoutForm = ({
       //   shipping_method: shippingOptions[0].id
       // },
       payment: {
-        id: "gway_Y5eDARaA6K49o3",
+        id: "gway_E50AqYxqPGrLld",
         gateway: "paystack",
         paystack: {
           reference: ref.reference,
@@ -186,7 +186,7 @@ const CheckoutForm = ({
         //   postal_zip_code: value.shippingPostalZipCode,
         // },
       },
-      pay_what_you_want: "2222.00",
+      //  pay_what_you_want: "2500.00",
     }
     console.log("Order data", orderData)
 
@@ -298,7 +298,7 @@ const CheckoutForm = ({
       email: value.email,
       amount: parseFloat(cart.subtotal.raw) * 100,
       currency: "ZAR",
-      publicKey: "pk_live_b10691dc007bf4e394d92f0ad75f996e327736c6", //"pk_test_4f0dddba5d054ad67f1c38a665e1fe95017a06a1",
+      publicKey: "pk_test_1f1911dcba87a9793353ff4abeef8b01af840da7", //"pk_live_8317bfbd88e2e136c3ce78ff3f76ac5061a2ce97",
       text: "Pay Now",
       onSuccess,
       onClose,

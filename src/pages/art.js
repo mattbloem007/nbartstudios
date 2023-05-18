@@ -103,13 +103,16 @@ const Art = ({ data }, location) => {
         title="All posts"
         keywords={[`blog`, `gatsby`, `javascript`, `react`]}
       />
-      <div className="post-feed" style={{ flexDirection: "column" }}>
+      <div className="art-post-feed">
         {posts.map(({ node }) => {
           postCounter++
           return (
             <article className="post-content page-template no-image">
               <h3 id="dynamic-styles">{node.title}</h3>
-              <div className="post-feed" style={{ flexWrap: "nowrap" }}>
+              <div
+                className="art-menu-post-feed"
+                style={{ flexWrap: "nowrap" }}
+              >
                 {node.menuItems.map(item => {
                   console.log("catalogue", node)
                   return (
@@ -215,10 +218,7 @@ const Art = ({ data }, location) => {
           // )
         })}
         <article className="post-content page-template no-image">
-          <div
-            className="post-content-body"
-            style={{ marginLeft: "145px", marginRight: "145px" }}
-          >
+          <div className="post-content-body">
             <Faq data={faqData} styles={styles} config={config} />
           </div>
         </article>
