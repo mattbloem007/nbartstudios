@@ -672,10 +672,22 @@ body {
   flex-wrap: wrap;
 }
 
+.doula-feed {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .art-post-feed {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
+}
+
+.performance-post-feed {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 145px;
+  margin-right: 145px;
 }
 
 .art-menu-post-feed {
@@ -686,7 +698,7 @@ body {
 
 .events-feed {
   display: flex;
-  flex-flow: row wrap;
+  /* flex-flow: row wrap; */
   justify-content: center;
   margin: 0px 0px 100px 0px;
   overflow-x: hidden;
@@ -747,6 +759,8 @@ body {
   position: relative;
   display: inline-block;
   margin: 0px 0px 0.5em;
+  font-style: italic;
+  font-weight: bold;
 }
 
 .testmonial-card {
@@ -767,6 +781,21 @@ body {
   display: flex;
   position: relative;
   height: 35vw;
+  background: linear-gradient(135deg, #1f1f1f 0%, #111 100%) center center;
+  background-size: cover;
+  overflow: hidden;
+  counter-increment: posts;
+}
+
+.doula-card {
+  position: relative;
+  flex: 1 1 33%;
+  display: flex;
+  position: relative;
+  height: 28vw;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin: 10px 1em;
   background: linear-gradient(135deg, #1f1f1f 0%, #111 100%) center center;
   background-size: cover;
   overflow: hidden;
@@ -806,6 +835,24 @@ body {
     height: 70vw;
   }
 
+  .product-card {
+    height: 32vw;
+    width: 65%;
+  }
+
+  .content {
+    font-size: 1rem;
+  }
+
+  .events-feed {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .doula-card {
+    height: 50vw;
+  }
+
   .art-post-feed {
     flex-direction: column;
     align-content: space-around;
@@ -815,8 +862,9 @@ body {
     flex-direction: column;
   }
 
-  .post-content {
-    width: 100%;
+  .performance-post-feed {
+    margin-left: 0px;
+    margin-right: 0px;
   }
 
   .post-content-body {
@@ -858,6 +906,23 @@ body {
 }
 
 .post-card-content {
+  flex: 1 1 auto;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 100px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  color: #fff;
+  /* background: rgba(0,0,0,0.1); */
+  opacity: 1;
+  transition: opacity 0.5s cubic-bezier(0.33, 0, 0.2, 1);
+}
+
+.art-card-content {
   flex: 1 1 auto;
   flex-direction: column;
   display: flex;
@@ -969,8 +1034,14 @@ body {
 .events-card-title {
   margin: 0;
   display: inline-block;
-  font-size: 2rem;
+  font-size: 1.7rem;
   transition: all 0.3s cubic-bezier(0.33, 0, 0.2, 1);
+}
+
+.events-card-byline {
+  padding-top: 10px;
+  font-size: 1.5rem;
+  font-style: italic;
 }
 
 /* Posts without images */
@@ -1008,6 +1079,22 @@ body {
   text-decoration: underline;
 }
 
+.doula-content {
+  /* max-width: 720px;
+    margin: 0 auto; */
+  margin: 0 6vw;
+  padding: 6vw 0;
+}
+
+.doula-testimonial {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.testimonial-video {
+  height: 21vw;
+}
+
 @media (max-width: 1200px) {
   .post-card.no-image .post-card-title {
     font-size: 3.4rem;
@@ -1018,6 +1105,23 @@ body {
     font-size: 1.7rem;
   }
 
+  .doula-content {
+    margin: 0px 2vw;
+    margin-left: 0px;
+  }
+
+  .events-card-title {
+    font-size: 1.3rem;
+  }
+
+  .events-card-byline {
+    font-size: 1.2rem;
+  }
+
+  .doula-feed {
+    flex-direction: column;
+  }
+
   .post-card-subtitle {
     font-size: 1rem;
   }
@@ -1026,8 +1130,25 @@ body {
     top: 7rem;
   }
 
+  .art-card-content {
+    top: 1rem;
+  }
+
   .post-card.no-image:before {
     font-size: 50vw;
+  }
+
+  .doula-testimonial {
+    flex-direction: column;
+  }
+
+  .testmonial-card-content {
+    margin-left: 10px;
+    margin-top: 20px;
+  }
+
+  .testimonial-video {
+    height: 70vw;
   }
 }
 
@@ -1083,6 +1204,21 @@ body {
   margin-left: 145px;
   margin-right: 145px;
 }
+
+.performance-content-body {
+  margin-top: 50px;
+  margin-left: 145px;
+  margin-right: 145px;
+  padding-bottom: 50px;
+}
+
+.post-content-body-product {
+  font-size: 1.9rem;
+  line-height: 1.65em;
+  margin-left: 145px;
+  margin-right: 0px;
+}
+
 @media (max-width: 500px) {
   .post-content-body {
     font-size: 1.7rem;
@@ -1209,6 +1345,34 @@ body {
   box-shadow: none !important;
 }
 
+.product-gallery {
+  display: flex;
+  align-items: baseline;
+}
+
+@media (max-width: 700px) {
+  .post-content {
+    width: 100%;
+    margin: 0px;
+  }
+
+  .product-gallery {
+    flex-direction: column;
+  }
+
+  .post-content-body-product {
+    margin-left: 0px;
+  }
+
+  .performance-content-body {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .performance-post-feed {
+    justify-content: flex-end;
+  }
+}
 /* Author Archive
 /* ---------------------------------------------------------- */
 

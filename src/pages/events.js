@@ -79,32 +79,34 @@ const Events = ({ data }, location) => {
           <h3 id="dynamic-styles" style={{ textAlign: "center" }}>
             Upcoming Events
           </h3>
-          <div className="events-feed">
-            {posts.map(({ node }) => {
-              postCounter++
-              return (
-                <article
-                  className={`events-card  post
+          <div className="doula-feed">
+            <div className="doula-article">
+              {posts.map(({ node }) => {
+                postCounter++
+                return (
+                  <article
+                    className={`doula-card  post
                       ${node.image ? `with-image` : `no-image`}`}
-                  style={
-                    node.image && {
-                      backgroundImage: `url(${node.image.url})`,
+                    style={
+                      node.image && {
+                        backgroundImage: `url(${node.image.url})`,
+                      }
                     }
-                  }
-                >
-                  <Link to={node.permalink} className="post-card-link">
-                    <div className="post-card-content">
-                      <h2
-                        className="post-card-title"
-                        style={{ textAlign: "center" }}
-                      >
-                        {node.name}
-                      </h2>
-                    </div>
-                  </Link>
-                </article>
-              )
-            })}
+                  >
+                    <Link to={node.permalink} className="post-card-link">
+                      <div className="post-card-detail">
+                        <h2
+                          className="events-card-title"
+                          style={{ textAlign: "center" }}
+                        >
+                          {node.name}
+                        </h2>
+                      </div>
+                    </Link>
+                  </article>
+                )
+              })}
+            </div>
           </div>
         </article>
       </div>

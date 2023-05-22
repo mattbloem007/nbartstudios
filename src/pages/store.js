@@ -109,7 +109,7 @@ const Store = ({ data }, location) => {
               <div className="container">
                 <div>
                   <div className="page-top">
-                    <h2 className="post-card-title">Categories</h2>
+                    <h2 className="events-card-title">Categories</h2>
                     <div className="store__nav">
                       <ul className="store__nav-items">
                         <li

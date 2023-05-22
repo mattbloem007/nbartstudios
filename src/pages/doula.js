@@ -121,8 +121,8 @@ const Doula = ({ data }, location) => {
         title="All posts"
         keywords={[`blog`, `gatsby`, `javascript`, `react`]}
       />
-      <div className="post-feed" style={{ flexDirection: "column" }}>
-        <article className="post-content page-template no-image">
+      <div className="doula-feed" style={{ flexDirection: "column" }}>
+        <article className="doula-content page-template no-image">
           <header className="page-slider" style={{ paddingTop: "0px" }}>
             <SimpleImageSlider
               width={896}
@@ -132,7 +132,7 @@ const Doula = ({ data }, location) => {
             />
           </header>
           <article
-            className="post-content page-template no-image"
+            className="doula-content page-template no-image"
             style={{ paddingTop: "0px", paddingBottom: "0px" }}
           >
             <div
@@ -155,7 +155,7 @@ const Doula = ({ data }, location) => {
 
           <TestimonialSlides doulaData={doulaData} />
           <article
-            className="post-content page-template no-image"
+            className="doula-content page-template no-image"
             style={{ paddingTop: "0px" }}
           >
             <div
@@ -177,7 +177,7 @@ const Doula = ({ data }, location) => {
               return <DoulaCard key={node.slug} node={node} />
             })}
           </div>
-          <article className="post-content page-template no-image">
+          <article className="doula-content page-template no-image">
             <div className="post-content-body">
               <Faq data={faqData} styles={styles} config={config} />
             </div>

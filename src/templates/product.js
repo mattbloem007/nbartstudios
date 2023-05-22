@@ -57,26 +57,20 @@ const Product = props => {
         {/**post.frontmatter.description && (
               <p class="post-content-excerpt">{post.frontmatter.description}</p>
             )*/}
-        <div style={{ display: "flex", alignItems: "baseline" }}>
+        <div className="product-gallery">
           <div style={{ width: "100%" }}>
             {data.checProduct.image && (
-              <div
-                className="post-content-image"
-                style={{ paddingRight: "111px" }}
-              >
+              <div className="post-content-image">
                 {Object.entries(product).length !== 0 && (
                   <ImageGalleryComponent images={product} />
                 )}
               </div>
             )}
           </div>
-          <div
-            className="row"
-            style={{ justifyContent: "center", paddingLeft: "77px" }}
-          >
+          <div className="row" style={{ justifyContent: "center" }}>
             <div className="col-lg-8">
               <div
-                className="post-content-body"
+                className="post-content-body-product"
                 style={{ textAlign: "center" }}
                 dangerouslySetInnerHTML={{
                   __html: data.checProduct.description,

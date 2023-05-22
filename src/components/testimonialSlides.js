@@ -65,7 +65,7 @@ class TestimonialSlides extends React.Component {
         {this.props.doulaData.testmonial ? (
           this.props.doulaData.testmonial.map(testmonial => {
             return (
-              <div className="post-feed" style={{ flexWrap: "nowrap" }}>
+              <div className="doula-testimonial" style={{ flexWrap: "nowrap" }}>
                 <article className={`testmonial-card post no-image`}>
                   <div className="testmonial-card-link">
                     <div className="testmonial-card-content">
@@ -89,13 +89,14 @@ class TestimonialSlides extends React.Component {
                       style={{ margin: "0px" }}
                     >
                       <iframe
+                        className="testimonial-video"
                         src={testmonial.videoTestimonial.file.url}
                         allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
                         frameBorder="0"
                         webkitallowfullscreen="true"
                         mozallowfullscreen="true"
                         allowFullScreen
-                        style={{ height: "21vw", width: "100%", margin: "0px" }}
+                        style={{ margin: "0px", width: "100%" }}
                       />
                     </div>
                   </div>

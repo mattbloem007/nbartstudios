@@ -132,7 +132,7 @@ const Art = ({ data }, location) => {
                             target="_blank"
                             className="post-card-link"
                           >
-                            <div className="post-card-content">
+                            <div className="art-card-content">
                               <h2
                                 className="art-card-title"
                                 style={{
@@ -157,7 +157,7 @@ const Art = ({ data }, location) => {
                             to={`/performances/${item.slug}`}
                             className="post-card-link"
                           >
-                            <div className="post-card-content">
+                            <div className="art-card-content">
                               <h2
                                 className="art-card-title"
                                 style={{
@@ -182,7 +182,7 @@ const Art = ({ data }, location) => {
                             to={`/exhibitions/${item.slug}`}
                             className="post-card-link"
                           >
-                            <div className="post-card-content">
+                            <div className="art-card-content">
                               <h2
                                 className="art-card-title"
                                 style={{

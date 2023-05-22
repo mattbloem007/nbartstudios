@@ -100,10 +100,7 @@ class PerformanceTemplate extends React.Component {
                     }
                   }
                   return (
-                    <div
-                      className="post-feed"
-                      style={{ marginLeft: "145px", marginRight: "145px" }}
-                    >
+                    <div className="performance-post-feed">
                       {item.gallery ? (
                         item.gallery.map(image => {
                           imageCounter++
@@ -130,15 +127,7 @@ class PerformanceTemplate extends React.Component {
                           JSON.parse(item.text.raw),
                           options
                         )}
-                      <div
-                        className="post-content-body"
-                        style={{
-                          marginTop: "50px",
-                          marginLeft: "145px",
-                          marginRight: "145px",
-                          paddingBottom: "50px",
-                        }}
-                      >
+                      <div className="performance-content-body">
                         {item.text && !hyperlink && (
                           <p>
                             {documentToReactComponents(
