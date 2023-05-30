@@ -1,11 +1,11 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, navigate } from "gatsby"
 import Layout from "../components/layout"
 import CartItem from "../components/cartItem"
 import { CircleSpinner } from "react-spinners-kit"
 
 const Cart = props => {
-  let { cart, onUpdateCartQty, onEmptyCart, onRemoveFromCart } = props
+  let { cart, onUpdateCartQty, onEmptyCart, onRemoveFromCart, showCart } = props
 
   const handleUpdateCartQty = (lineItemId, quantity) => {
     onUpdateCartQty(lineItemId, quantity)
@@ -66,15 +66,7 @@ const Cart = props => {
     }
   }
   return (
-    <div
-      className="cartContainer"
-      style={{
-        background: "#000000",
-        paddingTop: "20px",
-        borderRadius: "20px",
-        color: "white",
-      }}
-    >
+    <div className="cartContainer">
       <div className="col-lg-12">
         <div className="page-top">
           <h1 className="title_holder">Your Shopping Cart</h1>
@@ -105,18 +97,20 @@ const Cart = props => {
           >
             <span style={{ whiteSpace: "nowrap" }}>Empty Cart</span>
           </button>
-          <a href="/checkout" style={{ opacity: "1" }}>
-            <button
-              className="rn-button btn-white"
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                padding: "0px 30px",
-              }}
-            >
-              <span style={{ whiteSpace: "nowrap" }}>Checkout</span>
-            </button>
-          </a>
+          <button
+            className="rn-button btn-white"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              padding: "0px 30px",
+            }}
+            onClick={() => {
+              navigate("/checkout")
+              showCart()
+            }}
+          >
+            <span style={{ whiteSpace: "nowrap" }}>Checkout</span>
+          </button>
         </div>
       </div>
     </div>

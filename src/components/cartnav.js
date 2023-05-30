@@ -61,6 +61,7 @@ const CartNav = props => {
       {isCartVisible && (
         <Cart
           cart={cart}
+          showCart={showCart}
           onUpdateCartQty={onUpdateCartQty}
           onRemoveFromCart={onRemoveFromCart}
           onEmptyCart={onEmptyCart}

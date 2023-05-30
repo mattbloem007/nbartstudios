@@ -9,6 +9,8 @@ const Layout = props => {
   const [toggleNav, setToggleNav] = React.useState(false)
   const [displayPodcast, setDisplayPodcast] = React.useState(false)
 
+  console.log("toggle Nav", toggleNav)
+
   let {
     cart,
     onUpdateCartQty,
@@ -51,23 +53,35 @@ const Layout = props => {
           </a>
           <nav id="swup" class="site-head-left">
             <ul className="nav" role="menu">
-              <li className="nav-home nav-current" role="menuitem">
-                <Link to={`/`}>Home</Link>
+              <li className="nav-home" role="menuitem">
+                <Link to={`/`} onClick={() => setToggleNav(!toggleNav)}>
+                  Home
+                </Link>
               </li>
               <li className="nav-about" role="menuitem">
-                <Link to={`/store`}>Store</Link>
+                <Link to={`/store`} onClick={() => setToggleNav(!toggleNav)}>
+                  Store
+                </Link>
               </li>
               <li className="nav-elements" role="menuitem">
-                <Link to={`/art`}>Art</Link>
+                <Link to={`/art`} onClick={() => setToggleNav(!toggleNav)}>
+                  Art
+                </Link>
               </li>
               <li className="nav-about" role="menuitem">
-                <Link to={`/doula`}>Creativity Doula</Link>
+                <Link to={`/doula`} onClick={() => setToggleNav(!toggleNav)}>
+                  Creativity Doula
+                </Link>
               </li>
               <li className="nav-about" role="menuitem">
-                <Link to={`/about`}>About</Link>
+                <Link to={`/about`} onClick={() => setToggleNav(!toggleNav)}>
+                  About
+                </Link>
               </li>
               <li className="nav-about" role="menuitem">
-                <Link to={`/#contact`}>Contact</Link>
+                <Link to={`/#contact`} onClick={() => setToggleNav(!toggleNav)}>
+                  Contact
+                </Link>
               </li>
             </ul>
           </nav>
