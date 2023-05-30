@@ -87,7 +87,10 @@ const AboutPage = ({ data }, location) => {
             )}
           </h2>
           <figure className="kg-card kg-image-card kg-width-full">
-            <GatsbyImage className="kg-image" image={aboutData.featuredImage} />
+            <GatsbyImage
+              className="kg-image"
+              image={aboutData.featuredImage.gatsbyImageData}
+            />
             {/**<figcaption>Large imagery is at the heart of this theme</figcaption>*/}
           </figure>
           {documentToReactComponents(JSON.parse(aboutData.body.raw), options)}
