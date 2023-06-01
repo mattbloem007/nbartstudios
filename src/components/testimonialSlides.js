@@ -10,7 +10,9 @@ import { renderRichText } from "gatsby-source-contentful/rich-text"
 const Bold = ({ children }) => (
   <span style={{ fontWeight: "bold" }}>{children}</span>
 )
-const Text = ({ children }) => <p style={{ marginBottom: "0px" }}>{children}</p>
+const Text = ({ children }) => (
+  <p style={{ marginBottom: "0px", width: "100%" }}>{children}</p>
+)
 
 const options = {
   renderMark: {
@@ -22,19 +24,32 @@ const options = {
   renderNode: {
     [INLINES.HYPERLINK]: (node, children) => {
       console.log("INLINES NODE", node)
-      if (node.data.uri.indexOf("youtube.com") >= 0) {
+      if (
+        node.data.uri.includes("youtube.com") ||
+        node.data.uri.includes("youtu.be")
+      ) {
+        // Extract videoId from the URL
+        const match = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/.exec(
+          node.data.uri
+        )
+        const videoId = match && match[7].length === 11 ? match[7] : null
         return (
-          <div style={{ display: "flex", justifyContent: "center" }}>
+          videoId && (
             <iframe
-              width="340"
-              height="315"
-              src={node.data.uri}
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe>
-          </div>
+              className="video"
+              title={`https://youtube.com/embed/${videoId}`}
+              src={`https://youtube.com/embed/${videoId}`}
+              allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+              frameBorder="0"
+              allowFullScreen
+              style={{
+                maxWidth: "100%",
+                width: "100%",
+                height: "18vw",
+                margin: "0px",
+              }}
+            />
+          )
         )
       } else {
         return <a href={node.data.uri}>{children}</a>
@@ -88,7 +103,7 @@ class TestimonialSlides extends React.Component {
                       className="testmonial-card-content"
                       style={{ margin: "0px" }}
                     >
-                      <iframe
+                      {/**<iframe
                         className="testimonial-video"
                         src={testmonial.videoTestimonial.file.url}
                         allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
@@ -97,7 +112,11 @@ class TestimonialSlides extends React.Component {
                         mozallowfullscreen="true"
                         allowFullScreen
                         style={{ margin: "0px", width: "100%" }}
-                      />
+                      />*/
+                      documentToReactComponents(
+                        JSON.parse(testmonial.embeddedVideo.raw),
+                        options
+                      )}
                     </div>
                   </div>
                 </article>

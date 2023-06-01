@@ -213,10 +213,8 @@ const indexQuery = graphql`
         clientAchievements {
           raw
         }
-        videoTestimonial {
-          file {
-            url
-          }
+        embeddedVideo {
+          raw
         }
       }
       intro {

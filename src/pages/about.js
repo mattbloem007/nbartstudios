@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql, StaticQuery } from "gatsby"
+import { graphql, StaticQuery, navigate } from "gatsby"
 import Img from "gatsby-image"
 import { GatsbyImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
@@ -86,13 +86,25 @@ const AboutPage = ({ data }, location) => {
               options
             )}
           </h2>
-          <figure className="kg-card kg-image-card kg-width-full">
-            <GatsbyImage
-              className="kg-image"
-              image={aboutData.featuredImage.gatsbyImageData}
-            />
-            {/**<figcaption>Large imagery is at the heart of this theme</figcaption>*/}
-          </figure>
+          <GatsbyImage
+            className="kg-image"
+            image={aboutData.featuredImage.gatsbyImageData}
+          />
+          <article
+            className={`post-content no-image`}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              paddingBottom: "0px",
+            }}
+          >
+            <button
+              className="button primary"
+              onClick={() => navigate(aboutData.cv.file.url)}
+            >
+              View my CV here
+            </button>
+          </article>
           {documentToReactComponents(JSON.parse(aboutData.body.raw), options)}
         </div>
       </article>
@@ -108,6 +120,11 @@ const indexQuery = graphql`
       }
       featuredImage {
         gatsbyImageData(layout: FULL_WIDTH)
+      }
+      cv {
+        file {
+          url
+        }
       }
       body {
         raw

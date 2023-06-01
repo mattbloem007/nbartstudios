@@ -1206,6 +1206,8 @@ body {
 }
 
 .performance-content-body {
+  font-size: 1.9rem;
+  line-height: 1.65em;
   margin-top: 50px;
   margin-left: 145px;
   margin-right: 145px;
