@@ -87,7 +87,7 @@ const AboutPage = ({ data }, location) => {
             )}
           </h2>
           <GatsbyImage
-            className="kg-image"
+            className="about-image"
             image={aboutData.featuredImage.gatsbyImageData}
           />
           <article
