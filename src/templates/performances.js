@@ -106,8 +106,9 @@ class PerformanceTemplate extends React.Component {
                           imageCounter++
                           return (
                             <article
-                              className={`post-card ${imageCounter % 3 === 0 &&
-                                `post-card-large`} ${
+                              className={`post-card-performances ${imageCounter %
+                                3 ===
+                                0 && `post-card-large`} ${
                                 image ? `with-image` : `no-image`
                               }`}
                             >

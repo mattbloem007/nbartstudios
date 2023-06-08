@@ -5,6 +5,8 @@ import { documentToHtmlString } from "@contentful/rich-text-html-renderer"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types"
 import { renderRichText } from "gatsby-source-contentful/rich-text"
+import { isMobile } from "react-device-detect"
+
 //TODO: switch to staticQuery, get rid of comments, remove unnecessary components, export as draft template
 
 const Bold = ({ children }) => (
@@ -45,7 +47,7 @@ const options = {
               style={{
                 maxWidth: "100%",
                 width: "100%",
-                height: "18vw",
+                height: isMobile ? "70vw" : "18vw",
                 margin: "0px",
               }}
             />

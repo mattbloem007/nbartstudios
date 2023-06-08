@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 import { CircleSpinner } from "react-spinners-kit"
 import CartNav from "./cartnav"
 import "../utils/scss/style.scss"
+import { isMobile } from "react-device-detect"
 
 const Layout = props => {
   const { title, children } = props
@@ -83,6 +84,38 @@ const Layout = props => {
                   Contact
                 </Link>
               </li>
+              {isMobile ? (
+                <li className="nav-about" role="menuitem">
+                  <Link
+                    to={`https://podcasters.spotify.com/pod/show/air-it`}
+                    onClick={() => setToggleNav(!toggleNav)}
+                  >
+                    Podcast
+                  </Link>
+                  <ul className="subMenu__item__menuList">
+                    <li className="subMenu__item-link">
+                      <a
+                        target="_blank"
+                        href="https://podcasters.spotify.com/pod/show/air-it"
+                        onClick={() => setToggleNav(!toggleNav)}
+                      >
+                        Air it
+                      </a>
+                    </li>
+                    <li className="subMenu__item-link">
+                      <a
+                        target="_blank"
+                        href="https://podcasters.spotify.com/pod/show/nicolene-burger"
+                        onClick={() => setToggleNav(!toggleNav)}
+                      >
+                        NB Art notes
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              ) : (
+                <div></div>
+              )}
             </ul>
           </nav>
           <div className="site-head-center">
@@ -108,35 +141,41 @@ const Layout = props => {
               >
                 YouTube
               </a>
-              <div
-                className="subMenu"
-                onMouseEnter={e => showDropdownMenu(e)}
-                onMouseLeave={e => hideDropdownMenu(e)}
-              >
-                <div className="subMenu__item">Podcast</div>
-                {displayPodcast ? (
-                  <ul className="subMenu__item__menuList">
-                    <li className="subMenu__item-link">
-                      <a
-                        target="_blank"
-                        href="https://podcasters.spotify.com/pod/show/air-it"
-                      >
-                        Air it
-                      </a>
-                    </li>
-                    <li className="subMenu__item-link">
-                      <a
-                        target="_blank"
-                        href="https://podcasters.spotify.com/pod/show/nicolene-burger"
-                      >
-                        NB Art notes
-                      </a>
-                    </li>
-                  </ul>
-                ) : (
-                  <div></div>
-                )}
-              </div>
+
+              {isMobile ? (
+                <div></div>
+              ) : (
+                <div
+                  className="subMenu"
+                  onMouseEnter={e => showDropdownMenu(e)}
+                  onMouseLeave={e => hideDropdownMenu(e)}
+                >
+                  <div className="subMenu__item">Podcast</div>
+                  {displayPodcast ? (
+                    <ul className="subMenu__item__menuList">
+                      <li className="subMenu__item-link">
+                        <a
+                          target="_blank"
+                          href="https://podcasters.spotify.com/pod/show/air-it"
+                        >
+                          Air it
+                        </a>
+                      </li>
+                      <li className="subMenu__item-link">
+                        <a
+                          target="_blank"
+                          href="https://podcasters.spotify.com/pod/show/nicolene-burger"
+                        >
+                          NB Art notes
+                        </a>
+                      </li>
+                    </ul>
+                  ) : (
+                    <div></div>
+                  )}
+                </div>
+              )}
+
               <div
                 style={{
                   display: "block",
