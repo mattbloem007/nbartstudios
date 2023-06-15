@@ -152,8 +152,12 @@ const Doula = ({ data }, location) => {
           <h3 id="dynamic-styles" style={{ textAlign: "center" }}>
             Testimonials
           </h3>
-
-          <TestimonialSlides doulaData={doulaData} />
+          <article
+            className="doula-content page-template no-image"
+            style={{ paddingTop: "0px", paddingBottom: "0px" }}
+          >
+            <TestimonialSlides doulaData={doulaData} />
+          </article>
           <article
             className="doula-content page-template no-image"
             style={{ paddingTop: "0px" }}

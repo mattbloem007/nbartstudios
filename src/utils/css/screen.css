@@ -1151,7 +1151,11 @@ body {
   }
 
   .post-card-content {
-    top: 7rem;
+    top: 3rem;
+  }
+
+  .post-card-detail {
+    top: -15px;
   }
 
   .art-card-content {

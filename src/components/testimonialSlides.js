@@ -122,7 +122,7 @@ class TestimonialSlides extends React.Component {
                     </div>
                   </div>
                 </article>
-                <article className={`testmonial-card post no-image`}>
+                {/**<article className={`testmonial-card post no-image`}>
                   <div className="testmonial-card-link">
                     <div className="testmonial-card-content">
                       <h2
@@ -137,7 +137,7 @@ class TestimonialSlides extends React.Component {
                       )}
                     </div>
                   </div>
-                </article>
+                </article>*/}
               </div>
             )
           })
