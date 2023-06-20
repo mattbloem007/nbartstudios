@@ -595,9 +595,9 @@ const CheckoutForm = ({
               disabled={serverState.submitting}
               {...componentProps}
             />
-            <div id="paypalbutton" style={{ marginTop: "10px" }}>
+            {/**<div id="paypalbutton" style={{ marginTop: "10px" }}>
               <CircleSpinner size={30} loading={loading} />
-            </div>
+            </div>*/}
           </div>
         )}
         {serverState.status && (

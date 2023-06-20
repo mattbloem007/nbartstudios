@@ -33,7 +33,7 @@ const Product = props => {
         .querySelector(".hambergur-menu")
         .classList.toggle("hambergur-menu-open")
     }
-    //props.setCartVisible(!props.isCartVisible)
+    props.setCartVisible(!props.isCartVisible)
   }
 
   const htmlToText = html => {
