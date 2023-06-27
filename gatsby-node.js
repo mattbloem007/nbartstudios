@@ -1,10 +1,13 @@
 const path = require(`path`)
-const { createFilePath } = require(`gatsby-source-filesystem`)
+const {
+  createFilePath,
+  createRemoteFileNode,
+} = require(`gatsby-source-filesystem`)
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  //const blogPost = path.resolve(`./src/templates/blog-post.js`)
   const eventPost = path.resolve(`./src/templates/event.js`)
   const productPage = path.resolve(`./src/templates/product.js`)
   const performancePage = path.resolve(`./src/templates/performances.js`)
@@ -129,10 +132,41 @@ exports.createPages = ({ graphql, actions }) => {
   })
 }
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
+exports.onCreateNode = async ({
+  node,
+  actions,
+  getNode,
+  createNodeId,
+  store,
+  cache,
+}) => {
+  const { createNodeField, createNode } = actions
+
+  // if (node.internal.type !== "ChecProduct") {
+  //   return
+  // }
+  //
+  // // download image and create a File node
+  // // with gatsby-transformer-sharp and gatsby-plugin-sharp
+  // // that node will become an ImageSharp
+  // let urlString = node.image.url.split("|")
+  // let url = urlString[0] + "%7C" + urlString[1]
+  // const fileNode = await createRemoteFileNode({
+  //   url: url,
+  //   store,
+  //   cache,
+  //   createNode,
+  //   createNodeId,
+  // })
+  // console.log("FN", fileNode)
+  // if (fileNode) {
+  //   // link File node to DogImage node
+  //   // at field image
+  //   node.localFile___NODE = fileNode.id
+  // }
 
   if (node.internal.type === `MarkdownRemark`) {
+    console.log("IN MARKDOWN")
     const value = createFilePath({ node, getNode })
     createNodeField({
       name: `slug`,

@@ -162,6 +162,8 @@ const Store = ({ data }, location) => {
             <div className="events-feed">
               {currProducts.products.map(({ node }) => {
                 postCounter++
+                let urlString = node.image.url.split("|")
+                let url = urlString[0] + "%7C" + urlString[1]
                 return (
                   <div className="product-card-container">
                     <article
@@ -169,7 +171,7 @@ const Store = ({ data }, location) => {
                         ${node.image ? `with-image` : `no-image`}`}
                       style={
                         node.image && {
-                          backgroundImage: `url(${node.image.url})`,
+                          backgroundImage: `url(${url})`,
                         }
                       }
                     >
@@ -236,29 +238,6 @@ const indexQuery = graphql`
             formatted_with_symbol
           }
           permalink
-        }
-      }
-    }
-
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            description
-            thumbnail {
-              childImageSharp {
-                fluid(maxWidth: 1360) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
         }
       }
     }
