@@ -152,6 +152,26 @@ const CheckoutForm = ({
     console.log("closed")
   }
 
+  // const createSubscription = () => {
+  //   console.log("EMAIL", value.email)
+  //   const body = JSON.stringify({
+  //     customer: value.email,
+  //     plan: "PLN_qwmyi0mhkfmrr84",
+  //   })
+  //   await fetch("/.netlify/functions/subscription", {
+  //     hostname: 'api.paystack.co',
+  //     port: 443,
+  //     path: '/subscription',
+  //     method: 'POST',
+  //     headers: {
+  //       Authorization: 'Bearer SECRET_KEY',
+  //       'Content-Type': 'application/json'
+  //     }
+  //     body,
+  //   })
+  //   .then((res) => res.json())
+  // }
+
   const handleCaptureCheckout = ref => {
     console.log("In handle checkout")
     const orderData = {

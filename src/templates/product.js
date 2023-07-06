@@ -15,6 +15,16 @@ const Product = props => {
   const [product, setProduct] = useState({})
   let urlString = data.checProduct.image.url.split("|")
   let url = urlString[0] + "%7C" + urlString[1]
+  let checkoutUrl = ""
+
+  if (data.checProduct.name.indexOf("Persephone") !== -1) {
+    checkoutUrl = "https://paystack.com/pay/persephone-container"
+  } else if (data.checProduct.name.indexOf("Hades") !== -1) {
+    checkoutUrl = "https://paystack.com/pay/hades-container"
+  }
+  // else if (data.checProduct.name.indexOf("Demeter") !== -1) {
+  //   checkoutUrl = "https://paystack.com/pay/demeter-container-1"
+  // }
 
   useEffect(() => {
     commerce.products
@@ -92,13 +102,41 @@ const Product = props => {
               >
                 <i className="arrow left"></i> Back to Store
               </button>
-              <button
-                title=""
-                className="button primary"
-                onClick={handleAddToCart}
-              >
-                Add to Cart
-              </button>
+              {data.checProduct.name.indexOf("Demeter") !== -1 ? (
+                <span>
+                  <a
+                    style={{ marginRight: "10px" }}
+                    target="_blank"
+                    href="https://paystack.com/pay/demeter-container-1"
+                  >
+                    <button title="" className="button primary">
+                      Option 1, R2166,66 pm (3 months)
+                    </button>
+                  </a>
+                  <a
+                    target="_blank"
+                    href="https://paystack.com/pay/demeter-container-2"
+                  >
+                    <button title="" className="button primary">
+                      Option 2, R1625 pm (4 months)
+                    </button>
+                  </a>
+                </span>
+              ) : data.checProduct.categories[0].name == "Courses" ? (
+                <a target="_blank" href={checkoutUrl}>
+                  <button title="" className="button primary">
+                    Pay in Installments
+                  </button>
+                </a>
+              ) : (
+                <button
+                  title=""
+                  className="button primary"
+                  onClick={handleAddToCart}
+                >
+                  Add to Cart
+                </button>
+              )}
             </div>
           </div>
         </div>

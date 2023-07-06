@@ -96,7 +96,7 @@ const Confirmation = ({ data }, location) => {
             )}
           </h2>
           <h4>
-            Thank you for your purchase,{" "}
+            Thank you for your purchase{" "}
             {order.customer && order.customer.firstname}{" "}
             {order.customer && order.customer.lastname}!
           </h4>
