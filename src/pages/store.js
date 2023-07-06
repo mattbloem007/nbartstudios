@@ -164,6 +164,18 @@ const Store = ({ data }, location) => {
                 postCounter++
                 let urlString = node.image.url.split("|")
                 let url = urlString[0] + "%7C" + urlString[1]
+                let paymentOptions = ""
+                if (node.name.indexOf("Persephone") !== -1) {
+                  paymentOptions = "Full amount paid up front"
+                } else if (node.name.indexOf("Hades") !== -1) {
+                  paymentOptions = "Paid over 2 months - R1250 per month"
+                } else if (node.name.indexOf("Demeter") !== -1) {
+                  paymentOptions =
+                    "Paid over 3/4 months" +
+                    "\n" +
+                    "R2 166,66 / R1 625 per month"
+                }
+
                 return (
                   <div className="product-card-container">
                     <article
@@ -190,6 +202,19 @@ const Store = ({ data }, location) => {
                         <span class="category">
                           {node.price.formatted_with_symbol}
                         </span>
+                        {paymentOptions.length > 0 ? (
+                          <>
+                            <br />
+                            <div
+                              style={{ fontWeight: "unset", fontSize: "14px" }}
+                              class="category"
+                            >
+                              {paymentOptions}
+                            </div>
+                          </>
+                        ) : (
+                          <div></div>
+                        )}
                       </div>
                     </div>
                   </div>
