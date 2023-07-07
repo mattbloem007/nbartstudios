@@ -87,17 +87,9 @@ const Product = props => {
                 }}
               />
             </div>
-            <div
-              className="col-lg-8"
-              style={{
-                marginTop: "50px",
-                width: "100%",
-                display: "flex",
-                justifyContent: "space-between",
-              }}
-            >
+            <div className="col-lg-8 product-action-buttons">
               <button
-                className="button primary"
+                className="button primary product-back-button"
                 onClick={() => navigate("/store")}
               >
                 <i className="arrow left"></i> Back to Store
@@ -109,7 +101,10 @@ const Product = props => {
                     target="_blank"
                     href="https://paystack.com/pay/demeter-container-1"
                   >
-                    <button title="" className="button primary">
+                    <button
+                      title=""
+                      className="button primary product-demeter-buttons"
+                    >
                       Option 1, R2166,66 pm (3 months)
                     </button>
                   </a>
@@ -117,7 +112,10 @@ const Product = props => {
                     target="_blank"
                     href="https://paystack.com/pay/demeter-container-2"
                   >
-                    <button title="" className="button primary">
+                    <button
+                      title=""
+                      className="button primary product-demeter-buttons"
+                    >
                       Option 2, R1625 pm (4 months)
                     </button>
                   </a>

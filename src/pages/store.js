@@ -205,12 +205,12 @@ const Store = ({ data }, location) => {
                         {paymentOptions.length > 0 ? (
                           <>
                             <br />
-                            <div
-                              style={{ fontWeight: "unset", fontSize: "14px" }}
+                            <span
+                              style={{ fontWeight: "unset" }}
                               class="category"
                             >
                               {paymentOptions}
-                            </div>
+                            </span>
                           </>
                         ) : (
                           <div></div>
