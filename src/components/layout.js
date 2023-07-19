@@ -207,7 +207,12 @@ const Layout = props => {
         </div>
       </main>
       <footer className="site-foot">
-        &copy; {new Date().getFullYear()} <Link to={`/`}>{title}</Link>
+        &copy; {new Date().getFullYear()}
+        <br />
+        <Link to={`/policy`}>Privacy Policy</Link>
+        <br />
+        <Link to={`/terms`}>Terms & Conditions</Link>
+        <br />
       </footer>
     </div>
   )
