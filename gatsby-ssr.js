@@ -4,11 +4,11 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"
 
 export function onRenderBody({ setHeadComponents }) {
   setHeadComponents([
-    <script
-      type="text/javascript"
-      src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=YsZkRA"
-    ></script>,
-    ,
+    // <script
+    //   type="text/javascript"
+    //   src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=YsZkRA"
+    // ></script>,
+    // ,
     <script
       dangerouslySetInnerHTML={{
         __html: `
