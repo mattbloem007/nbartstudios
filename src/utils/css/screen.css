@@ -871,6 +871,7 @@ body {
   .events-feed {
     flex-direction: column;
     justify-content: flex-start;
+    padding-left: 50px;
   }
 
   .doula-card {

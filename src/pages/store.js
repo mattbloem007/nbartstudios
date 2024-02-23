@@ -164,6 +164,7 @@ const Store = ({ data }, location) => {
                 postCounter++
                 let urlString = node.image.url.split("|")
                 let url = urlString[0] + "%7C" + urlString[1]
+                console.log("URL", url)
                 let paymentOptions = ""
                 if (node.name.indexOf("Persephone") !== -1) {
                   paymentOptions = "Full amount paid up front"
