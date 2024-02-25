@@ -164,7 +164,7 @@ const Store = ({ data }, location) => {
                 postCounter++
                 let urlString = node.image.url.split("|")
                 let url = urlString[0] + "%7C" + urlString[1]
-                console.log("URL", url)
+                url = "'" + url + "'"
                 let paymentOptions = ""
                 if (node.name.indexOf("Persephone") !== -1) {
                   paymentOptions = "Full amount paid up front"
@@ -184,7 +184,8 @@ const Store = ({ data }, location) => {
                         ${node.image ? `with-image` : `no-image`}`}
                       style={
                         node.image && {
-                          backgroundImage: `url(${url})`,
+                          margin: "20px",
+                          backgroundImage: `url(${url.toString()})`,
                         }
                       }
                     >

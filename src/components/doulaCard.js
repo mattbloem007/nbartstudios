@@ -4,6 +4,7 @@ import { Link } from "gatsby"
 export default props => {
   let urlString = props.node.image.url.split("|")
   let url = urlString[0] + "%7C" + urlString[1]
+  url = "'" + url + "'"
 
   return (
     <div className="doula-article">

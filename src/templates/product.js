@@ -17,9 +17,9 @@ const Product = props => {
   let url = urlString[0] + "%7C" + urlString[1]
   let checkoutUrl = ""
 
-  if (data.checProduct.name.indexOf("Persephone") !== -1) {
+  if (data.checProduct.name.indexOf("Catalyst") !== -1) {
     checkoutUrl = "https://paystack.com/pay/persephone-container"
-  } else if (data.checProduct.name.indexOf("Hades") !== -1) {
+  } else if (data.checProduct.name.indexOf("Execution") !== -1) {
     checkoutUrl = "https://paystack.com/pay/hades-container"
   }
   // else if (data.checProduct.name.indexOf("Demeter") !== -1) {
@@ -50,7 +50,7 @@ const Product = props => {
     return html.replace(/(<([^>]+)>)/g, " ")
   }
   let desc = htmlToText(data.checProduct.description)
-  console.log("Product", product)
+  console.log("Product", data.checProduct)
   return (
     <>
       <SEO
@@ -81,9 +81,9 @@ const Product = props => {
             <div className="col-lg-8">
               <div
                 className="col-lg-8 product-action-buttons"
-                style={{ marginLeft: "50%", marginBottom: "30px" }}
+                style={{ justifyContent: "center", marginBottom: "30px" }}
               >
-                {data.checProduct.name.indexOf("Demeter") !== -1 ? (
+                {data.checProduct.name.indexOf("Power Container") !== -1 ? (
                   <span>
                     <a
                       style={{ marginRight: "10px" }}
@@ -140,7 +140,7 @@ const Product = props => {
               >
                 <i className="arrow left"></i> Back to Store
               </button>
-              {data.checProduct.name.indexOf("Demeter") !== -1 ? (
+              {data.checProduct.name.indexOf("Power Container") !== -1 ? (
                 <span>
                   <a
                     style={{ marginRight: "10px" }}

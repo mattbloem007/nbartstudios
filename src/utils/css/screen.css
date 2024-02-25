@@ -1453,7 +1453,7 @@ body {
   .product-action-buttons {
     flex-direction: column;
     width: unset;
-    align-items: flex-start;
+    align-items: center;
   }
 
   .product-back-button {
