@@ -40,13 +40,13 @@ module.exports = {
         name: `blog`,
       },
     },
-    {
-      resolve: "@chec/gatsby-source-chec",
-      options: {
-        publicKey: process.env.NEXT_PUBLIC_CHEC_PUBLIC_KEY,
-        //downloadImageAssets: true,
-      },
-    },
+    // {
+    //   resolve: "@chec/gatsby-source-chec",
+    //   options: {
+    //     publicKey: process.env.NEXT_PUBLIC_CHEC_PUBLIC_KEY,
+    //     //downloadImageAssets: true,
+    //   },
+    // },
     {
       resolve: `gatsby-source-filesystem`,
       options: {

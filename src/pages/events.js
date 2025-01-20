@@ -122,25 +122,6 @@ const indexQuery = graphql`
         description
       }
     }
-
-    allChecProduct {
-      edges {
-        node {
-          id
-          name
-          image {
-            url
-          }
-          categories {
-            name
-          }
-          price {
-            formatted_with_symbol
-          }
-          permalink
-        }
-      }
-    }
   }
 `
 

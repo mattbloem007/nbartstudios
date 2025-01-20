@@ -8,8 +8,8 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
   //const blogPost = path.resolve(`./src/templates/blog-post.js`)
-  const eventPost = path.resolve(`./src/templates/event.js`)
-  const productPage = path.resolve(`./src/templates/product.js`)
+  // const eventPost = path.resolve(`./src/templates/event.js`)
+  // const productPage = path.resolve(`./src/templates/product.js`)
   const performancePage = path.resolve(`./src/templates/performances.js`)
   const exhibitionPage = path.resolve(`./src/templates/exhibitions.js`)
   // actions.createPage({
@@ -31,22 +31,22 @@ exports.createPages = ({ graphql, actions }) => {
   //   },
   // })
 
+  // allChecProduct {
+  //   edges {
+  //     node {
+  //       id
+  //       permalink
+  //       name
+  //       image {
+  //         url
+  //       }
+  //     }
+  //   }
+  // }
+
   return graphql(
     `
       {
-        allChecProduct {
-          edges {
-            node {
-              id
-              permalink
-              name
-              image {
-                url
-              }
-            }
-          }
-        }
-
         allContentfulArtPageFeed {
           edges {
             node {
@@ -66,8 +66,8 @@ exports.createPages = ({ graphql, actions }) => {
     }
 
     // Create blog posts pages.
-    const events = result.data.allChecProduct.edges
-    const products = result.data.allChecProduct.edges
+    //  const events = result.data.allChecProduct.edges
+    //  const products = result.data.allChecProduct.edges
     const performances = result.data.allContentfulArtPageFeed.edges
 
     // posts.forEach((post, index) => {
@@ -85,28 +85,28 @@ exports.createPages = ({ graphql, actions }) => {
     //   })
     // })
 
-    events.forEach((event, index) => {
-      createPage({
-        path: `/events/${event.node.permalink}`,
-        component: eventPost,
-        context: {
-          slug: event.node.permalink,
-        },
-      })
-    })
+    // events.forEach((event, index) => {
+    //   createPage({
+    //     path: `/events/${event.node.permalink}`,
+    //     component: eventPost,
+    //     context: {
+    //       slug: event.node.permalink,
+    //     },
+    //   })
+    // })
 
-    products.forEach(product => {
-      let urlString = product.node.image.url.split("|")
-      let url = urlString[0] + "%7C" + urlString[1]
-      createPage({
-        path: `/store/${product.node.permalink}`,
-        component: productPage,
-        context: {
-          id: product.node.id,
-          url,
-        },
-      })
-    })
+    // products.forEach(product => {
+    //   let urlString = product.node.image.url.split("|")
+    //   let url = urlString[0] + "%7C" + urlString[1]
+    //   createPage({
+    //     path: `/store/${product.node.permalink}`,
+    //     component: productPage,
+    //     context: {
+    //       id: product.node.id,
+    //       url,
+    //     },
+    //   })
+    // })
 
     performances.forEach((node, index) => {
       if (node.node.slug && node.node.typeOfPage) {

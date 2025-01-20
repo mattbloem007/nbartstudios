@@ -86,7 +86,7 @@ const Doula = ({ data }, location) => {
   const siteTitle = data.site.siteMetadata.title
   const doulaData = data.contentfulDoulaPage
   console.log("doulaData", doulaData)
-  const posts = data.allChecProduct.edges
+  //  const posts = data.allChecProduct.edges
   let rows = []
   let testmonialData = []
   doulaData.testmonial.map(test => {
@@ -176,11 +176,11 @@ const Doula = ({ data }, location) => {
               </p>
             </div>
           </article>
-          <div className="doula-feed">
+          {/**          <div className="doula-feed">
             {posts.map(({ node }) => {
               return <DoulaCard key={node.slug} node={node} />
             })}
-          </div>
+          </div>*/}
           <article className="doula-content page-template no-image">
             <div className="post-content-body">
               <Faq data={faqData} styles={styles} config={config} />
@@ -230,30 +230,6 @@ const indexQuery = graphql`
       featuredImages {
         file {
           url
-        }
-      }
-    }
-
-    allChecProduct(
-      filter: { categories: { elemMatch: { name: { eq: "Courses" } } } }
-    ) {
-      edges {
-        node {
-          id
-          name
-          image {
-            url
-          }
-          categories {
-            name
-          }
-          price {
-            formatted_with_symbol
-          }
-          permalink
-          seo {
-            title
-          }
         }
       }
     }

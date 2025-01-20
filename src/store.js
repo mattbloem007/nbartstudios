@@ -238,39 +238,31 @@ const indexQuery = graphql`
         description
       }
     }
-
-    allChecCategory {
-      edges {
-        node {
-          name
-          products {
-            id
-          }
-        }
-      }
-    }
-
-    allChecProduct {
-      edges {
-        node {
-          id
-          name
-          image {
-            url
-          }
-          categories {
-            name
-          }
-          price {
-            formatted_with_symbol
-          }
-          permalink
-        }
-      }
-    }
   }
 `
+// allChecProduct {
+//   edges {
+//     node {
+//       id
+//       permalink
+//       name
+//       image {
+//         url
+//       }
+//     }
+//   }
+// }
 
+// allChecCategory {
+//   edges {
+//     node {
+//       name
+//       products {
+//         id
+//       }
+//     }
+//   }
+// }
 export default props => (
   <StaticQuery
     query={indexQuery}

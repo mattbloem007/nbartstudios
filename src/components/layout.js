@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import { CircleSpinner } from "react-spinners-kit"
-import CartNav from "./cartnav"
+//import CartNav from "./cartnav"
 import "../utils/scss/style.scss"
 import { isMobile } from "react-device-detect"
 
@@ -12,14 +12,14 @@ const Layout = props => {
 
   console.log("toggle Nav", toggleNav)
 
-  let {
-    cart,
-    onUpdateCartQty,
-    onRemoveFromCart,
-    onEmptyCart,
-    isCartVisible,
-    setCartVisible,
-  } = props
+  // let {
+  //   cart,
+  //   onUpdateCartQty,
+  //   onRemoveFromCart,
+  //   onEmptyCart,
+  //   isCartVisible,
+  //   setCartVisible,
+  // } = props
 
   const showDropdownMenu = event => {
     event.preventDefault()
@@ -59,11 +59,7 @@ const Layout = props => {
                   Home
                 </Link>
               </li>
-              <li className="nav-about" role="menuitem">
-                <Link to={`/store`} onClick={() => setToggleNav(!toggleNav)}>
-                  Store
-                </Link>
-              </li>
+
               <li className="nav-elements" role="menuitem">
                 <Link to={`/art`} onClick={() => setToggleNav(!toggleNav)}>
                   Art
@@ -184,7 +180,7 @@ const Layout = props => {
                   fontWeight: "600",
                 }}
               >
-                {cart && Object.entries(cart).length === 0 ? (
+                {/**cart && Object.entries(cart).length === 0 ? (
                   <CircleSpinner size={30} loading={true} color="#131313" />
                 ) : (
                   <CartNav
@@ -195,7 +191,7 @@ const Layout = props => {
                     isCartVisible={isCartVisible}
                     setCartVisible={setCartVisible}
                   />
-                )}
+                )*/}
               </div>
             </div>
           </div>
