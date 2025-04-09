@@ -8,6 +8,8 @@ import Img from "gatsby-image"
 import SimpleImageSlider from "react-simple-image-slider"
 import DoulaCard from "../components/doulaCard"
 import TestimonialSlides from "../components/testimonialSlides"
+import Contact from "../components/contact"
+import MenuCard from "../components/imageMenuCard"
 
 // import "../utils/global.scss"
 import "../utils/normalize.css"
@@ -85,7 +87,8 @@ const config = {
 const Doula = ({ data }, location) => {
   const siteTitle = data.site.siteMetadata.title
   const doulaData = data.contentfulDoulaPage
-  console.log("doulaData", doulaData)
+  const booklets = data.allContentfulDoulaPageMenu.edges
+  console.log("doulaData", booklets)
   //  const posts = data.allChecProduct.edges
   let rows = []
   let testmonialData = []
@@ -158,9 +161,10 @@ const Doula = ({ data }, location) => {
           >
             <TestimonialSlides doulaData={doulaData} />
           </article>
+          <Contact title="Book a 1-1 session" />
           <article
             className="doula-content page-template no-image"
-            style={{ paddingTop: "0px" }}
+            style={{ paddingTop: "0px", paddingBottom: "0px" }}
           >
             <div
               className="post-content-body"
@@ -176,6 +180,27 @@ const Doula = ({ data }, location) => {
               </p>
             </div>
           </article>
+          <MenuCard booklet={booklets[1]} />
+          <article
+            className="doula-content page-template no-image"
+            style={{ paddingTop: "0px", paddingBottom: "0px" }}
+          >
+            <div
+              className="post-content-body"
+              style={{
+                paddingBottom: "0px",
+              }}
+            >
+              <p>
+                {documentToReactComponents(
+                  JSON.parse(doulaData.consciousCollaborationText.raw),
+                  options
+                )}
+              </p>
+            </div>
+          </article>
+          <MenuCard booklet={booklets[0]} />
+          <Contact title="Book Teams/Co-Founders Sessions" />
           {/**          <div className="doula-feed">
             {posts.map(({ node }) => {
               return <DoulaCard key={node.slug} node={node} />
@@ -198,6 +223,25 @@ const indexQuery = graphql`
       siteMetadata {
         title
         description
+      }
+    }
+
+    allContentfulDoulaPageMenu {
+      edges {
+        node {
+          title
+          menuItems {
+            itemName
+            image {
+              gatsbyImageData(layout: FULL_WIDTH)
+            }
+            booklet {
+              file {
+                url
+              }
+            }
+          }
+        }
       }
     }
 
@@ -225,6 +269,9 @@ const indexQuery = graphql`
         raw
       }
       creativeCycle {
+        raw
+      }
+      consciousCollaborationText {
         raw
       }
       featuredImages {
