@@ -180,7 +180,7 @@ const Doula = ({ data }, location) => {
               </p>
             </div>
           </article>
-          <MenuCard booklet={booklets[1]} />
+          <MenuCard booklet={booklets[0]} />
           <article
             className="doula-content page-template no-image"
             style={{ paddingTop: "0px", paddingBottom: "0px" }}
@@ -199,7 +199,7 @@ const Doula = ({ data }, location) => {
               </p>
             </div>
           </article>
-          <MenuCard booklet={booklets[0]} />
+          <MenuCard booklet={booklets[1]} />
           <Contact title="Book Teams/Co-Founders Sessions" />
           {/**          <div className="doula-feed">
             {posts.map(({ node }) => {
@@ -226,7 +226,7 @@ const indexQuery = graphql`
       }
     }
 
-    allContentfulDoulaPageMenu {
+    allContentfulDoulaPageMenu(sort: { order: ASC, fields: order }) {
       edges {
         node {
           title
