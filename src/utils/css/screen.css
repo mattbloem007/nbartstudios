@@ -691,6 +691,12 @@ body {
   flex-direction: column;
 }
 
+.art-post-feed2 {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
 .performance-post-feed {
   display: flex;
   flex-wrap: wrap;
@@ -699,6 +705,12 @@ body {
 }
 
 .art-menu-post-feed {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.art-menu-post-feed2 {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -795,6 +807,18 @@ body {
   counter-increment: posts;
 }
 
+.post-card2 {
+  position: relative;
+  flex: 1 1 50%;
+  display: flex;
+  position: relative;
+  height: 35vw;
+  background: linear-gradient(135deg, #1f1f1f 0%, #111 100%) center center;
+  background-size: cover;
+  overflow: hidden;
+  counter-increment: posts;
+}
+
 .post-card-performances {
   position: relative;
   flex: 1 1 50%;
@@ -823,6 +847,17 @@ body {
 }
 
 .article {
+  position: relative;
+  flex: 1 1 50%;
+  display: flex;
+  height: 35vw;
+  background: linear-gradient(135deg, #1f1f1f 0%, #111 100%) center center;
+  background-size: cover;
+  overflow: hidden;
+  counter-increment: posts;
+}
+
+.article2 {
   position: relative;
   flex: 1 1 50%;
   display: flex;
@@ -1148,11 +1183,11 @@ body {
   }
 
   .post-card-subtitle {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 
   .post-card-content {
-    top: 3rem;
+    top: 6rem;
   }
 
   .post-card-detail {

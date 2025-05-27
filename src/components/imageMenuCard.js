@@ -7,23 +7,23 @@ export default props => {
   console.log("PROPS", props.booklet)
 
   return (
-    <div className="art-post-feed">
+    <div className="art-post-feed2">
       <article
         className="doula-content page-template no-image"
         style={{ padding: "2vw 0" }}
       >
-        <div className="art-menu-post-feed" style={{ flexWrap: "nowrap" }}>
+        <div className="art-menu-post-feed2" style={{ flexWrap: "nowrap" }}>
           {props.booklet.node.menuItems.map(item => {
             console.log("catalogue", item)
             return (
-              <div className="article">
+              <div className="article2">
                 <a
                   href={item.booklet.file.url}
                   target="_blank"
                   className="post-card-link"
                 >
                   <article
-                    className={`post-card ${bookletCounter % 3 === 0 &&
+                    className={`post-card2 ${bookletCounter % 3 === 0 &&
                       `post-card-large`} post
                       ${item ? `with-image` : `no-image`}`}
                   >
